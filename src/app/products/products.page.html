@@ -1,0 +1,55 @@
+<ion-content>
+  <div>
+    <h3>
+      Fruits & Veg
+    </h3>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="2">
+          <ion-button color="medium">Fruits</ion-button>
+        </ion-col>
+        <ion-col size="2">
+          <ion-button color="medium">Vegetables</ion-button>
+        </ion-col>
+        <ion-col size="2">
+          <ion-button color="medium">Herbs</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="3" *ngFor="let i of [].constructor(10)">
+          <div style="border: 1px solid;">
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-img [src]="'https://i.ndtvimg.com/mt/cooks/2014-11/carrots.jpg'"></ion-img>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <div class="ion-text-center">
+                    <span>Product of Australia</span>
+                  </div>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <span>Carrot</span>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <span>Carrot</span>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <span>Carrot</span>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

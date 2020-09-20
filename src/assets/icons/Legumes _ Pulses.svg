@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="66.041" height="74.03" viewBox="0 0 66.041 74.03">
+  <g id="Group_2048" data-name="Group 2048" transform="translate(-914.959 -737)">
+    <g id="Ellipse_102" data-name="Ellipse 102" transform="translate(929.371 792.09) rotate(-31)" fill="none" stroke="#000" stroke-width="2">
+      <ellipse cx="23.478" cy="11.048" rx="23.478" ry="11.048" stroke="none"/>
+      <ellipse cx="23.478" cy="11.048" rx="22.478" ry="10.048" fill="none"/>
+    </g>
+    <g id="Ellipse_104" data-name="Ellipse 104" transform="translate(939.729 786.566) rotate(-31)" fill="none" stroke="#000" stroke-width="2">
+      <ellipse cx="11.394" cy="5.179" rx="11.394" ry="5.179" stroke="none"/>
+      <ellipse cx="11.394" cy="5.179" rx="10.394" ry="4.179" fill="none"/>
+    </g>
+    <g id="Ellipse_105" data-name="Ellipse 105" transform="matrix(0.259, -0.966, 0.966, 0.259, 928.329, 777.539)" fill="none" stroke="#000" stroke-width="2">
+      <ellipse cx="11.394" cy="5.179" rx="11.394" ry="5.179" stroke="none"/>
+      <ellipse cx="11.394" cy="5.179" rx="10.394" ry="4.179" fill="none"/>
+    </g>
+    <g id="Ellipse_103" data-name="Ellipse 103" transform="matrix(0.259, -0.966, 0.966, 0.259, 914.959, 782.356)" fill="none" stroke="#000" stroke-width="2">
+      <ellipse cx="23.478" cy="11.048" rx="23.478" ry="11.048" stroke="none"/>
+      <ellipse cx="23.478" cy="11.048" rx="22.478" ry="10.048" fill="none"/>
+    </g>
+    <path id="Path_2495" data-name="Path 2495" d="M7033.943,700.468a9.212,9.212,0,0,0,4.459-4.975" transform="matrix(0.978, -0.208, 0.208, 0.978, -6058.361, 1563.155)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="2"/>
+    <path id="Path_2496" data-name="Path 2496" d="M7033.943,700.468a9.212,9.212,0,0,0,4.459-4.975" transform="translate(6621.109 -3416.438) rotate(138)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="2"/>
+  </g>
+</svg>

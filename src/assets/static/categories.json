@@ -1,0 +1,161 @@
+{
+    "categories": [
+        {
+            "id": "c1",
+            "name": "Fruit & Veg",
+            "sub": [
+                {
+                    "id": "c11",
+                    "name": "Fruits"
+                },
+                {
+                    "id": "c12",
+                    "name": "Vegetables"
+                },
+                {
+                    "id": "c13",
+                    "name": "Herbs"
+                }
+            ]
+        },
+        {
+            "id": "c2",
+            "name": "Spices & Sauces",
+            "sub": [
+                {
+                    "id": "c21",
+                    "name": "Whole"
+                },
+                {
+                    "id": "c22",
+                    "name": "Grounded"
+                },
+                {
+                    "id": "c23",
+                    "name": "Blended"
+                },
+                {
+                    "id": "c24",
+                    "name": "Cooking Sauces"
+                },
+                {
+                    "id": "c25",
+                    "name": "Pickles"
+                },
+                {
+                    "id": "c26",
+                    "name": "Chutneys"
+                }
+            ]
+        },
+        {
+            "id": "c3",
+            "name": "Rice & Flour",
+            "sub": [
+                {
+                    "id": "c31",
+                    "name": "Rice"
+                },
+                {
+                    "id": "c32",
+                    "name": "Flour"
+                }
+            ]
+        },
+        {
+            "id": "c4",
+            "name": "Fresh",
+            "sub": [
+                {
+                    "id": "c41",
+                    "name": "Tofu"
+                },
+                {
+                    "id": "c42",
+                    "name": "Paneer"
+                },
+                {
+                    "id": "c43",
+                    "name": "Kimchi"
+                },
+                {
+                    "id": "c44",
+                    "name": "Fruits"
+                },
+                {
+                    "id": "c12",
+                    "name": "Vegetables"
+                },
+                {
+                    "id": "c13",
+                    "name": "Herbs"
+                }
+            ]
+        },
+        {
+            "id": "c5",
+            "name": "Frozen",
+            "sub": []
+        },
+        {
+            "id": "c6",
+            "name": "Health & Beauty",
+            "sub": []
+        },
+        {
+            "id": "c7",
+            "name": "Noodles",
+            "sub": []
+        },
+        {
+            "id": "c8",
+            "name": "Meat",
+            "sub": []
+        },
+        {
+            "id": "c9",
+            "name": "Snacks",
+            "sub": []
+        },
+        {
+            "id": "c10",
+            "name": "Beverages",
+            "sub": []
+        },
+        {
+            "id": "c11",
+            "name": "Legumes & Pulses",
+            "sub": []
+        },
+        {
+            "id": "c12",
+            "name": "Home",
+            "sub": [
+                {
+                    "id": "c41",
+                    "name": "Tofu"
+                },
+                {
+                    "id": "c42",
+                    "name": "Paneer"
+                },
+                {
+                    "id": "c43",
+                    "name": "Kimchi"
+                },
+                {
+                    "id": "c44",
+                    "name": "Fruits"
+                },
+                {
+                    "id": "c12",
+                    "name": "Vegetables"
+                },
+                {
+                    "id": "c13",
+                    "name": "Herbs"
+                }
+            ]
+        }
+    ]
+}
