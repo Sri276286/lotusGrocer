@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -10,6 +10,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+  @ViewChild('scrollContent') el: ElementRef;
+  public scrolled: boolean = false;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -22,6 +24,22 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      console.log('event => ', this.el.nativeElement.scrollTop);
     });
+  }
+
+  /**
+   * Handle scroll
+   * @param event
+   */
+  onScroll(event: Event) {
+    // console.log('event => ', event, this.el.nativeElement.scrollTop);
+    if (event) {
+      if (this.el.nativeElement.scrollTop > 100) {
+        this.scrolled = true;
+      } else {
+        this.scrolled = false;
+      }
+    }
   }
 }

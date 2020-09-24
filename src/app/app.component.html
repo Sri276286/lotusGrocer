@@ -1,11 +1,11 @@
 <ion-app>
   <lotus-header></lotus-header>
-  <lotus-categories></lotus-categories>
   <ion-content>
-    <!-- <lotus-categories></lotus-categories> -->
-    <ion-router-outlet></ion-router-outlet>
+    <div #scrollContent (scroll)="onScroll($event)" class="scroll-content">
+      <div id="one">
+        <lotus-categories></lotus-categories>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
   </ion-content>
-  <!-- <ion-footer>
-    <lotus-footer></lotus-footer>
-  </ion-footer> -->
 </ion-app>

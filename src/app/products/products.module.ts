@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 import { ProductsPage } from './products.page';
 import { ProductsPageRoutingModule } from './products-routing.module';
+import { ProductPage } from './product/product.page';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { ProductsPageRoutingModule } from './products-routing.module';
     IonicModule,
     ProductsPageRoutingModule
   ],
-  declarations: [ProductsPage]
+  declarations: [ProductsPage,
+    ProductPage]
 })
-export class ProductsPageModule {}
+export class ProductsPageModule { }

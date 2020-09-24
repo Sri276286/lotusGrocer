@@ -1,0 +1,49 @@
+<ion-grid>
+  <ion-row>
+    <ion-col class="ion-align-self-center">
+      <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && onSubmit(registerForm.valid)">
+        <div class="ion-padding" *ngIf="registerForm.get('mobileNumber').errors?.pattern">
+          <span style="color: red;">Phone number must be a valid 10 digit number.</span>
+        </div>
+        <div class="ion-padding" *ngIf="registerForm.get('email').errors?.email">
+          <span style="color: red;">Please provide a valid email address.</span>
+        </div>
+        <div class="ion-padding" *ngIf="registerForm.get('password').errors?.pattern">
+          <span style="color: red;">Password must contain a digit, an uppercase, a lowercase,a special
+            character and between 6-15 characters.</span>
+        </div>
+        <div class="ion-padding"
+          *ngIf="registerForm.get('confirm_password').touched && registerForm.get('confirm_password').errors">
+          <span style="color: red;">Password and Confirm password must match.</span>
+        </div>
+        <div class="ion-padding">
+          <ion-item>
+            <ion-icon name="person-circle" slot="start"></ion-icon>
+            <ion-input type="text" placeholder="Name" formControlName="name"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="call" slot="start"></ion-icon>
+            <ion-input type="text" placeholder="* Enter 10 digit Mobile No." formControlName="mobileNumber"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="mail" slot="start"></ion-icon>
+            <ion-input type="text" placeholder="* Email" formControlName="email"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="lock-closed" slot="start"></ion-icon>
+            <ion-input type="password" placeholder="* Password" formControlName="password"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="lock-closed" slot="start"></ion-icon>
+            <ion-input type="password" placeholder="* Confirm Password" formControlName="confirm_password"></ion-input>
+          </ion-item>
+        </div>
+
+        <div class="ion-padding">
+          <ion-button type="submit" color="success" size="large" expand="block" [disabled]="registerForm.invalid">
+            Register</ion-button>
+        </div>
+      </form>
+    </ion-col>
+  </ion-row>
+</ion-grid>

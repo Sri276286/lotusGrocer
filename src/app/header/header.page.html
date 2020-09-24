@@ -4,4 +4,8 @@
         Lotus Grocer
       </ion-title>
     </ion-toolbar>
+    <div class="ion-text-end">
+      <ion-button [routerLink]="['cart']">Cart</ion-button>
+      <ion-button (click)="loginPopover()">Login</ion-button>
+    </div>
   </ion-header>
