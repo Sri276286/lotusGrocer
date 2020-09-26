@@ -22,22 +22,32 @@ export class CategoryPage implements OnInit {
     }
 
     showSub(category) {
-        console.log('aaaa ', category.sub);
-        this.subcategory = category.sub;
-        const template = document.getElementById('template');
-        tippy('#categ', {
-            content: template.innerHTML,
-            allowHTML: true,
+        console.log('aaaa ', category.name, category.sub);
+        console.log('instance => ', this.tippyInstance);
+        tippy('#' + category.id, {
             interactive: true,
             placement: "bottom",
             appendTo: document.body,
-            theme: 'light'
+            arrow: false,
+            onCreate(instance) {
+                console.log('bbbb', category.sub);
+                var ul = document.createElement('ul');
+                ul.style.listStyle = 'none';
+                ul.style.margin = '0';
+                ul.style.padding = '0';
+                // ul.className = 'liststyle';
+                category.sub.forEach((x) => {
+                    var li = document.createElement('li');
+                    li.innerHTML = x.name;
+                    li.style.textAlign = 'center';
+                    li.style.padding = '2px';
+                    li.style.borderBottom = category.sub.length > 1 ? '1px solid grey' : 'none';
+                    li.style.cursor = 'pointer';
+                    // ul.classList.add('liststyle');
+                    ul.appendChild(li);
+                });
+                instance.setContent(ul);
+            }
         });
-        // this.tippyInstance = template.innerHTML._tippy;
-    }
-
-    removeSub() {
-        // this.tippyInstance.destroy();
-        this.subcategory = [];
     }
 }
