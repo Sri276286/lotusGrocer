@@ -1,15 +1,24 @@
 <h1>Categories</h1>
-<ion-grid>
+<ion-grid class="ion-padding">
     <ion-row>
         <ion-col size="2" *ngFor="let category of categories">
-            <div class="ion-text-center" [routerLink]="['products']">
-                <ion-icon src="/assets/icons/Fresh.svg"></ion-icon>
-            </div>
-            <div class="ion-text-center">
-                <span>
-                    {{category.name}}
-                </span>
+            <div id="categ" (mouseenter)="showSub(category)" (mouseleave)="removeSub()">
+                <div class="ion-text-center" [routerLink]="['products']">
+                    <ion-icon src="/assets/icons/Fresh.svg"></ion-icon>
+                </div>
+                <div class="ion-text-center">
+                    <span>
+                        {{category.name}}
+                    </span>
+                </div>
             </div>
         </ion-col>
     </ion-row>
 </ion-grid>
+<div id="template" style="display: none;">
+    <ul>
+        <li *ngFor="let item of subcategory">
+            {{item.name}}
+        </li>
+    </ul>
+</div>
