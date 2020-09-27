@@ -3,7 +3,7 @@
     <ion-row>
         <ion-col size="2" *ngFor="let category of categories">
             <div id="{{category.id}}" (mouseenter)="showSub(category)" style="cursor: pointer;">
-                <div class="ion-text-center" [routerLink]="['products']">
+                <div class="ion-text-center" [routerLink]="['products']" style="outline:0; cursor:pointer;">
                     <ion-icon src="/assets/icons/Fresh.svg"></ion-icon>
                 </div>
                 <div class="ion-text-center">

@@ -22,15 +22,12 @@ export class CategoryPage implements OnInit {
     }
 
     showSub(category) {
-        console.log('aaaa ', category.name, category.sub);
-        console.log('instance => ', this.tippyInstance);
         tippy('#' + category.id, {
             interactive: true,
             placement: "bottom",
             appendTo: document.body,
             arrow: false,
             onCreate(instance) {
-                console.log('bbbb', category.sub);
                 var ul = document.createElement('ul');
                 ul.style.listStyle = 'none';
                 ul.style.margin = '0';

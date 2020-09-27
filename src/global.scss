@@ -28,6 +28,20 @@
 @import 'tippy.js/dist/tippy.css';
 // @import 'tippy.js/themes/light.css';
 
-.login-popover {
+.login-popover, .categories-popover {
 --width: 70%;
 }
+
+
+ion-input {
+    border: 2px solid grey;
+}
+
+ion-textarea {
+    border: 2px solid grey;
+}
+
+ion-select {
+    border: 2px solid grey;
+}
+

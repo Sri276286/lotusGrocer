@@ -10,6 +10,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { CredentialsPage } from './header/credentials/credentials.page';
 import { SignupPage } from './header/signup/signup.page';
+import { AddProductPage } from './products/addproduct/addproduct.page';
+import { HomePage } from './home/home.page';
 
 const components = [
     HeaderPage,
@@ -18,7 +20,9 @@ const components = [
     SubCategListPage,
     LoginPage,
     SignupPage,
-    CredentialsPage
+    CredentialsPage,
+    HomePage,
+    AddProductPage
 ];
 
 @NgModule({

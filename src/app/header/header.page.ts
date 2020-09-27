@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { CategoryPage } from '../categories/categories.page';
 import { LotusCommonService } from '../services/common.service';
 import { CredentialsPage } from './credentials/credentials.page';
+import { LoginPage } from './login/login.page';
 
 @Component({
     selector: 'lotus-header',
@@ -17,8 +19,13 @@ export class HeaderPage {
         this.commonService.presentPopover(CredentialsPage, null, 'login-popover');
     }
 
-    showSearch() {
+    showSearch(event) {
         console.log('show search');
         this.show_search_list = true;
+        // this.commonService.presentPopover(LoginPage, null, '', event);
+    }
+
+    showCategories(event) {
+        this.commonService.presentPopover(CategoryPage, null, 'categories-popover', event);
     }
 }

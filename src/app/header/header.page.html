@@ -2,29 +2,18 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <span>
+        <div>
           Lotus Grocer
-        </span>
-        <!-- <ion-toolbar>
-          <ion-title style="background-color: #f4f5f8;">
-            Lotus Grocer
-          </ion-title>
-        </ion-toolbar> -->
+        </div>
+        <ion-button (click)="showCategories($event)">Categories</ion-button>
       </ion-col>
       <ion-col>
         <div class="ion-text-end">
           <ion-button (click)="loginPopover()">Login</ion-button>
           <ion-button [routerLink]="['cart']">Cart</ion-button>
         </div>
-        <ion-searchbar (click)="showSearch()"></ion-searchbar>
+        <ion-searchbar (click)="showSearch($event)"></ion-searchbar>
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-header>
-<!-- <div *ngIf="show_search_list">
-  <ion-list>
-    <ion-item>Item1</ion-item>
-    <ion-item>Item2</ion-item>
-    <ion-item>Item3</ion-item>
-  </ion-list>
-</div> -->

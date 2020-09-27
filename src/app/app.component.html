@@ -2,7 +2,7 @@
   <lotus-header></lotus-header>
   <ion-content>
     <div #scrollContent (scroll)="onScroll($event)" class="scroll-content">
-      <div id="one">
+      <div id="one" *ngIf="showCategories">
         <lotus-categories></lotus-categories>
       </div>
       <router-outlet></router-outlet>
