@@ -3,6 +3,7 @@
   <ion-content>
     <div #scrollContent (scroll)="onScroll($event)" class="scroll-content">
       <div id="one" *ngIf="showCategories">
+        <h1>Categories</h1>
         <lotus-categories></lotus-categories>
       </div>
       <router-outlet></router-outlet>

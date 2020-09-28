@@ -51,15 +51,12 @@ export class AppComponent {
       .pipe(filter((e) => e instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
         this.showCategories = this.validateURL(event);
-        console.log('show categs => ', this.showCategories);
       });
   }
 
   private validateURL(event: NavigationEnd) {
     if (event.url) {
-      console.log('url => ', event.url);
       const homeCheck = event.url === '/';
-      console.log('home check => ', homeCheck);
       return homeCheck;
     } else {
       return false;

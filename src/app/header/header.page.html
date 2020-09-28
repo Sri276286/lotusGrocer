@@ -9,6 +9,9 @@
       </ion-col>
       <ion-col>
         <div class="ion-text-end">
+          <ion-avatar style="display: inline;" class="ion-padding" (click)="showProfile($event)">
+            <ion-icon name="person-circle" size="large"></ion-icon>
+          </ion-avatar>
           <ion-button (click)="loginPopover()">Login</ion-button>
           <ion-button [routerLink]="['cart']">Cart</ion-button>
         </div>

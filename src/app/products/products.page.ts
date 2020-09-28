@@ -17,7 +17,6 @@ export class ProductsPage implements OnInit {
   ngOnInit() {
     this.productService.getProducts()
       .subscribe((res: Product[]) => {
-        console.log('products => ', res);
         this.products = res;
       });
   }
@@ -26,7 +25,6 @@ export class ProductsPage implements OnInit {
    * Add item to the cart
   */
   addItem(item) {
-    console.log('item => ', item);
     this.cartService.addProduct(item);
   }
 
@@ -39,8 +37,6 @@ export class ProductsPage implements OnInit {
   }
 
   onWeightChange(event, item) {
-    console.log('event => ', event);
-    console.log('item => ', item);
     // map quantity for already selected weights
     // item = this._mapItemOnWeightChange(item);
     let weightEntity = item.weights.find(t => t.weight === item.weight);

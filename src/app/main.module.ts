@@ -12,6 +12,7 @@ import { CredentialsPage } from './header/credentials/credentials.page';
 import { SignupPage } from './header/signup/signup.page';
 import { AddProductPage } from './products/addproduct/addproduct.page';
 import { HomePage } from './home/home.page';
+import { ProfileListPage } from './header/profile-list/profile-list.page';
 
 const components = [
     HeaderPage,
@@ -22,7 +23,8 @@ const components = [
     SignupPage,
     CredentialsPage,
     HomePage,
-    AddProductPage
+    AddProductPage,
+    ProfileListPage
 ];
 
 @NgModule({

@@ -59,9 +59,7 @@ export class AddProductPage implements OnInit {
    */
   submitProduct() {
     const isValid = this.productForm.valid;
-    console.log('is valid ', isValid);
     if (isValid) {
-      console.log('value ', this.productForm.value);
       // this._menuService.addProduct(this.productForm.value).subscribe(() => {
       // }, () => {
       // });

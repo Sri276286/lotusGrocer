@@ -16,7 +16,6 @@ export class CategoryPage implements OnInit {
 
     ngOnInit() {
         this.categoryService.getCategories().subscribe((res: any) => {
-            console.log('res ', res);
             this.categories = res && res.categories;
         });
     }

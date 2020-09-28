@@ -3,6 +3,8 @@ import { CategoryPage } from '../categories/categories.page';
 import { LotusCommonService } from '../services/common.service';
 import { CredentialsPage } from './credentials/credentials.page';
 import { LoginPage } from './login/login.page';
+import { ProfileListPage } from './profile-list/profile-list.page';
+import { SearchPage } from './search/search.page';
 
 @Component({
     selector: 'lotus-header',
@@ -20,12 +22,15 @@ export class HeaderPage {
     }
 
     showSearch(event) {
-        console.log('show search');
         this.show_search_list = true;
-        // this.commonService.presentPopover(LoginPage, null, '', event);
+        this.commonService.presentPopover(SearchPage, null, 'search-popover', event);
     }
 
     showCategories(event) {
-        this.commonService.presentPopover(CategoryPage, null, 'categories-popover', event);
+        this.commonService.presentPopover(CategoryPage, null, 'categories-popover', event, false);
+    }
+
+    showProfile(event) {
+        this.commonService.presentPopover(ProfileListPage, null, '', event, false);
     }
 }
