@@ -1,0 +1,60 @@
+<div class="ion-text-center">
+    Order
+</div>
+<ion-grid style="padding:15px; box-shadow: 2px 2px 5px 5px lightgrey inset;">
+    <ion-row>
+        <ion-col size="3" style="border-right: 1px solid grey;">
+            <h5>Your Delivery Address</h5>
+            <div>John K</div>
+            <div>6-16, March Street</div>
+            <div>Time Circle</div>
+            <div>Sydney - 5234</div>
+            <div>+2-987654</div>
+        </ion-col>
+        <ion-col size="3" style="padding-left:15px;border-right: 1px solid grey;">
+            <h5>Your Delivery Slot</h5>
+            <div>Fri 06 Mar 2020 between 06:30 AM and 09:30 AM</div>
+        </ion-col>
+        <ion-col size="3" style="padding-left:15px;">
+            <h5>Amount to pay</h5>
+            <div>$44.90</div>
+            <h5>Mode of Payment</h5>
+            <div>Cash On Delivery</div>
+        </ion-col>
+    </ion-row>
+</ion-grid>
+<ion-grid>
+    <ion-row style="background-color: grey;">
+        <ion-col size="5">Product</ion-col>
+        <ion-col size="2">Per Unit Price</ion-col>
+        <ion-col size="3">Quantity</ion-col>
+        <ion-col size="2">Sub Total</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let i of [].constructor(3)" style="border-bottom: 1px solid grey;">
+        <ion-col size="5">
+            <ion-row>
+                <ion-col size="3">
+                    <div style="width:60px;height:60px;">
+                        <ion-img [src]="'https://i.ndtvimg.com/mt/cooks/2014-11/carrots.jpg'"></ion-img>
+                    </div>
+                </ion-col>
+                <ion-col size="6">Carrot</ion-col>
+            </ion-row>
+        </ion-col>
+        <ion-col size="2">
+            <span class="ion-text-center">120</span>
+        </ion-col>
+        <ion-col size="3">
+            <span class="ion-text-center">2</span>
+        </ion-col>
+        <ion-col size="2">
+            <span class="ion-text-center">240</span>
+        </ion-col>
+    </ion-row>
+    <ion-row style="border: 1px solid grey;">
+        <ion-col offset="8">
+            <span style="font-weight: 600;">Total</span>
+        </ion-col>
+        <ion-col>720</ion-col>
+    </ion-row>
+</ion-grid>

@@ -1,3 +1,14 @@
 <div>
   <h3>My Orders</h3>
 </div>
+<ion-grid class="ion-padding">
+  <ion-row *ngFor="let i of [].constructor(10)" style="border: 1px solid grey;padding: 15px; margin-bottom: 15px;">
+    <ion-col size="2">Delivered On</ion-col>
+    <ion-col size="3">06 MAR, FRI 6:30 AM - 9:30 AM</ion-col>
+    <ion-col size="3">Order Amount: $56.00</ion-col>
+    <ion-col size="2">22 Items</ion-col>
+    <ion-col size="2">
+      <a [routerLink]="['1']">View More</a>
+    </ion-col>
+  </ion-row>
+</ion-grid>
