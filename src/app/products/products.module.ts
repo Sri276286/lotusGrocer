@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { ProductsPage } from './products.page';
 import { ProductsPageRoutingModule } from './products-routing.module';
 import { ProductPage } from './product/product.page';
-import { AddProductPage } from './addproduct/addproduct.page';
 import { RouterModule } from '@angular/router';
 
 
@@ -15,6 +14,7 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     FormsModule,
     IonicModule,
+    RouterModule,
     ProductsPageRoutingModule
   ],
   declarations: [ProductsPage,

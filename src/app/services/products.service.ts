@@ -8,10 +8,15 @@ import { Product } from '../models/product';
 })
 export class ProductsService {
     productListUrl: string = 'assets/static/products.json';
+    productUrl: string = 'assets/static/product.json';
     constructor(private http: HttpClient) {
     }
 
     getProducts(): Observable<Product[]> {
         return this.http.get<Product[]>(this.productListUrl);
+    }
+
+    getProduct(id: string): Observable<Product> {
+        return this.http.get<Product>(this.productUrl);
     }
 }

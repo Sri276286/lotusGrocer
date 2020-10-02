@@ -1,28 +1,51 @@
 <div>
-  <h3>
-    Product
-  </h3>
+  <div>
+    <ul class="breadcrumb">
+      <li><a [routerLink]="['/']">Home</a></li>
+      <li><a [routerLink]="['products']">Fruits & Veg</a></li>
+      <li><a [routerLink]="['products', product.product_id]">Carrots</a></li>
+    </ul>
+  </div>
   <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-img [src]="'https://i.ndtvimg.com/mt/cooks/2014-11/carrots.jpg'"></ion-img>
+    <ion-row *ngIf="product">
+      <ion-col size="7">
+        <div style="background-color: #f4f5f8; padding:50px;">
+          <ion-img style="width:100%;height:100%;" [src]="product.imageurl">
+          </ion-img>
+        </div>
       </ion-col>
-      <ion-col>
-        <div><span>Product of Australia</span></div>
-        <div><span>Product of Australia</span></div>
-        <div><span>Product of Australia</span></div>
-        <div><span>Product of Australia</span></div>
+      <ion-col class="ion-padding">
+        <div style="font-weight: 600; font-size:32px;">{{product.product_name | titlecase}}</div>
+        <div>Product of {{product.product_origin | titlecase}}</div>
+        <div style="margin-top:10px;"><span
+            style="background-color: green; padding: 5px; color:white; font-weight:500;">4.3
+            <ion-icon name="star"></ion-icon></span></div>
+        <div style="margin-top: 20px;">
+          <select [(ngModel)]="product.weight" (change)="onWeightChange($event, product)"
+            style="width:200px; padding: 10px;">
+            <option [value]="val.weight" *ngFor="let val of product.weights">
+              {{val.weight}} {{val.unit}}
+            </option>
+          </select>
+        </div>
+        <div style="margin-top:20px;background-color: #f4f5f8; padding:10px;">
+          <span style="text-decoration: line-through; color:grey;">MRP ${{product.original_price}}</span>
+          <span style="font-weight: bold;padding:0 10px; font-size:26px;">${{product.discount_price}}</span>
+          <span style="color: orangered;">(25% OFF)</span></div>
         <div>
-          <ion-row>
-            <ion-col size="4" class="ion-no-padding">
-              <ion-button color="danger" (click)="removeItem(item)"><span class="span-general">-</span></ion-button>
+          <ion-row *ngIf="!product.quantity">
+            <ion-col>
+              <ion-button shape="round" (click)="addItem(product)">ADD +</ion-button>
             </ion-col>
-            <ion-col size="4" class="ion-no-padding">
-              <ion-button color="light"><span style="color: black; font-weight: bold;">1</span>
-              </ion-button>
-            </ion-col>
-            <ion-col size="4" class="ion-no-padding">
-              <ion-button color="success" (click)="addItem(item)"><span class="span-general">+</span></ion-button>
+          </ion-row>
+          <ion-row *ngIf="product.quantity">
+            <ion-col>
+              <div>
+                <ion-button color="danger" (click)="removeItem(product)"><span>-</span></ion-button>
+                <ion-button color="light"><span style="color: black; font-weight: bold;">1</span>
+                </ion-button>
+                <ion-button color="success" (click)="addItem(product)"><span>+</span></ion-button>
+              </div>
             </ion-col>
           </ion-row>
         </div>

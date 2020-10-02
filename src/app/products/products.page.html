@@ -10,7 +10,7 @@
       <ion-col size="3" *ngFor="let product of products">
         <div class="product-card">
           <ion-grid>
-            <ion-row [routerLink]="['product']" style="outline:0;cursor:pointer;">
+            <ion-row [routerLink]="[product.product_id]" style="outline:0;cursor:pointer;">
               <ion-col>
                 <ion-img [src]="product.imageurl" style="max-width:250px;max-height:200px;"></ion-img>
               </ion-col>
@@ -29,25 +29,12 @@
             </ion-row>
             <ion-row>
               <ion-col>
-                <!-- <div class="dropdown">
-                  <button class="dropbtn">{{product.weight}} {{product.unit}}</button>
-                  <ul class="dropdown-content">
-                    <li *ngFor="let val of product.weights" (click)="onWeightChange(product)">
-                      {{val.weight}} {{val.unit}}
-                    </li>
-                  </ul>
-                </div> -->
                 <select [(ngModel)]="product.weight" (change)="onWeightChange($event, product)"
                   style="width:150px; padding: 5px;">
                   <option [value]="val.weight" *ngFor="let val of product.weights">
                     {{val.weight}} {{val.unit}}
                   </option>
                 </select>
-                <!-- <ion-select interface="popover" [ngModel]="product.weight" (ngModelChange)="onWeightChange($event, item)">
-                  <ion-select-option [value]="val.weight" *ngFor="let val of product.weights">
-                    <span>{{val.weight}} {{val.unit}}</span>
-                  </ion-select-option>
-                </ion-select> -->
               </ion-col>
             </ion-row>
             <ion-row>
