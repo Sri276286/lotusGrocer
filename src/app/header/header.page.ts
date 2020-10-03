@@ -14,8 +14,13 @@ import { SearchPage } from './search/search.page';
 export class HeaderPage {
 
     show_search_list = false;
+    canLogin: boolean = false;
     constructor(private commonService: LotusCommonService) {
-
+        this.commonService.loginSuccess$.subscribe(() => {
+            console.log('logged in');
+            this.canLogin = this.commonService.isLogin();
+            console.log('can login => ', this.canLogin);
+        });
     }
     loginPopover() {
         this.commonService.presentPopover(CredentialsPage, null, 'login-popover');

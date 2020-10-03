@@ -27,6 +27,7 @@
 
 @import 'tippy.js/dist/tippy.css';
 // @import 'tippy.js/themes/light.css';
+// @import 'swiper/swiper-bundle.css';
 
 .login-popover, .categories-popover {
 --width: 70%;
@@ -39,6 +40,7 @@
 
 
 ion-input {
+    padding-left: 5px;
     border: 2px solid grey;
 }
 

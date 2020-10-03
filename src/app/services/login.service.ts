@@ -10,6 +10,7 @@ import { ApiConfig } from '../apiconfig/api.config';
 })
 export class LoginService {
 
+    loginUrl: string = 'assets/static/login.json';
     constructor(private http: HttpClient) {
     }
 
@@ -23,7 +24,8 @@ export class LoginService {
         let options = {
             headers: httpHeaders
         };
-        return this.http.post(ApiConfig.loginURL, user, options).pipe(map((res: any) => {
+        return this.http.get(this.loginUrl).pipe(map((res: any) => {
+            console.log('login ressss => ', res);
             if (res && res.accessToken) {
                 localStorage.setItem('auth_token', res.accessToken);
                 localStorage.setItem('session_active', 'true');
@@ -44,13 +46,6 @@ export class LoginService {
             headers: httpHeaders
         };
         return this.http.post(ApiConfig.signupURL, user, options);
-    }
-
-    /**
-     * Logout url
-     */
-    doLogout() {
-        return this.http.get(ApiConfig.logoutURL);
     }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LotusCommonService } from 'src/app/services/common.service';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -11,7 +12,8 @@ export class LoginPage implements OnInit {
     loginForm: FormGroup;
 
     constructor(private fb: FormBuilder,
-        private loginService: LoginService) {
+        private loginService: LoginService,
+        private commonService: LotusCommonService) {
     }
 
     ngOnInit() {
@@ -28,7 +30,8 @@ export class LoginPage implements OnInit {
     submit(isvalid: boolean) {
         if (isvalid) {
             this.loginService.login(this.loginForm.value).subscribe(() => {
-                // this._commonService.loginSuccess$.next(true);
+                this.commonService.loginSuccess$.next(true);
+                this.commonService.dismissPopover();
             });
         }
     }

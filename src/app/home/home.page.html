@@ -1,3 +1,141 @@
 <div>
   <ion-button [routerLink]="['addproduct']">Add Product</ion-button>
 </div>
+<div style="position:relative;">
+  <h3>Member Deals</h3>
+  <div class="arrow-left-product" (click)="slidePrev()">
+    <ion-icon name="chevron-back-outline"></ion-icon>
+  </div>
+  <div class="arrow-right-product" (click)="slideNext()">
+    <ion-icon name="chevron-forward-outline"></ion-icon>
+  </div>
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide *ngFor="let product of products">
+      <div>
+        <ion-grid>
+          <ion-row [routerLink]="[product.product_id]" style="outline:0;cursor:pointer;">
+            <ion-col>
+              <ion-img [src]="product.imageurl" style="max-width:250px;max-height:200px;"></ion-img>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div class="ion-text-center">
+                <span>Product of {{product.product_origin | titlecase}}</span>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <span>{{product.product_name | titlecase}}</span>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <select [(ngModel)]="product.weight" (change)="onWeightChange($event, product)"
+                style="width:150px; padding: 5px;">
+                <option [value]="val.weight" *ngFor="let val of product.weights">
+                  {{val.weight}} {{val.unit}}
+                </option>
+              </select>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <span style="font-weight: 600;">${{product.original_price}}</span>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <span>was ${{product.discount_price}}</span>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="!product.quantity">
+            <ion-col>
+              <ion-button (click)="addItem(product)">ADD +</ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="product.quantity">
+            <ion-col>
+              <div>
+                <ion-button color="danger" (click)="removeItem(product)"><span>-</span></ion-button>
+                <ion-button color="light"><span style="color: black; font-weight: bold;">1</span>
+                </ion-button>
+                <ion-button color="success" (click)="addItem(product)"><span>+</span></ion-button>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</div>
+<div style="position:relative;">
+  <h3>Promotion Deals</h3>
+  <div class="arrow-left-product" (click)="slidePrev()">
+    <ion-icon name="chevron-back-outline"></ion-icon>
+  </div>
+  <div class="arrow-right-product" (click)="slideNext()">
+    <ion-icon name="chevron-forward-outline"></ion-icon>
+  </div>
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide *ngFor="let product of products">
+      <div>
+        <ion-grid>
+          <ion-row [routerLink]="[product.product_id]" style="outline:0;cursor:pointer;">
+            <ion-col>
+              <ion-img [src]="product.imageurl" style="max-width:250px;max-height:200px;"></ion-img>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div class="ion-text-center">
+                <span>Product of {{product.product_origin | titlecase}}</span>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <span>{{product.product_name | titlecase}}</span>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <select [(ngModel)]="product.weight" (change)="onWeightChange($event, product)"
+                style="width:150px; padding: 5px;">
+                <option [value]="val.weight" *ngFor="let val of product.weights">
+                  {{val.weight}} {{val.unit}}
+                </option>
+              </select>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <span style="font-weight: 600;">${{product.original_price}}</span>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <span>was ${{product.discount_price}}</span>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="!product.quantity">
+            <ion-col>
+              <ion-button (click)="addItem(product)">ADD +</ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="product.quantity">
+            <ion-col>
+              <div>
+                <ion-button color="danger" (click)="removeItem(product)"><span>-</span></ion-button>
+                <ion-button color="light"><span style="color: black; font-weight: bold;">1</span>
+                </ion-button>
+                <ion-button color="success" (click)="addItem(product)"><span>+</span></ion-button>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</div>

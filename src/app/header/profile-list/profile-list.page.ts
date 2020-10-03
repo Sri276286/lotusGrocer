@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LotusCommonService } from 'src/app/services/common.service';
 
 @Component({
     selector: 'lotus-profile-list',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class ProfileListPage {
 
+    constructor(private commonService: LotusCommonService) {
+    }
+
+    doLogout() {
+        localStorage.clear();
+        this.commonService.loginSuccess$.next(false);
+        this.commonService.dismissPopover();
+    }
 }

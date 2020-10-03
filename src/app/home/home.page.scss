@@ -1,0 +1,28 @@
+.swiper-container {
+    width: 90%;
+    height: 100%;
+}
+
+.product-card {
+  border: 1px solid grey;
+  box-shadow: 2px 2px 2px 2px grey;
+}
+
+.arrow-product {
+  position: absolute;
+  top: 50%;
+  font-size: 25px;
+  z-index: 2;
+  background: grey;
+  padding: 10px 5px;
+}
+
+.arrow-left-product {
+  @extend .arrow-product;
+  left: 16px;
+}
+
+.arrow-right-product {
+  @extend .arrow-product;
+  right: 16px;
+}
