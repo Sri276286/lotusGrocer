@@ -1,0 +1,8 @@
+<div>
+    <ul class="breadcrumb" *ngIf="breadcrumb && breadcrumb.length">
+        <li *ngFor="let bread of breadcrumb">
+            <a [routerLink]="[bread.path]" *ngIf="bread.path">{{bread.label}}</a>
+            <span *ngIf="!bread.path">{{bread.label}}</span>
+        </li>
+    </ul>
+</div>

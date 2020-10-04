@@ -336,52 +336,5 @@
                 "Default": true
             }
         ]
-    },
-    {
-        "product_id": "789",
-        "product_name": "carrots",
-        "category": "fruits & veg",
-        "category_id": "900",
-        "sub_category": "vegetables",
-        "product_description": "description on product",
-        "original_price": "20",
-        "discount_price": "18",
-        "imageurl": "https://i.ndtvimg.com/mt/cooks/2014-11/carrots.jpg",
-        "product_origin": "india",
-        "weights": [
-            {
-                "weight": "100",
-                "unit": "grams",
-                "description": "description of weight",
-                "imageurl": "api/picture/5f59ed5a333ca70022874515",
-                "original_price": "10",
-                "discount_price": "9",
-                "total_quantity": "100",
-                "available_quantity": "90",
-                "Default": false
-            },
-            {
-                "weight": "200",
-                "unit": "grams",
-                "description": "description of weight",
-                "imageurl": "api/picture/5f59ed5a333ca70022874515",
-                "original_price": "20",
-                "discount_price": "18",
-                "total_quantity": "100",
-                "available_quantity": "90",
-                "Default": false
-            },
-            {
-                "weight": "500",
-                "unit": "grams",
-                "description": "description of weight",
-                "imageurl": "api/picture/5f59ed5a333ca70022874515",
-                "original_price": "45",
-                "discount_price": "42",
-                "total_quantity": "100",
-                "available_quantity": "90",
-                "Default": true
-            }
-        ]
     }
 ]

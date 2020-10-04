@@ -25,10 +25,10 @@ export class LoginService {
             headers: httpHeaders
         };
         return this.http.get(this.loginUrl).pipe(map((res: any) => {
-            console.log('login ressss => ', res);
             if (res && res.accessToken) {
                 localStorage.setItem('auth_token', res.accessToken);
                 localStorage.setItem('session_active', 'true');
+                localStorage.setItem('admin', res.isAdmin);
                 return res;
             } else {
                 return throwError(`No access token received`);

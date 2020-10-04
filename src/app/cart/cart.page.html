@@ -1,17 +1,17 @@
 <div>
-  <h3>My Cart</h3>
+  <h3 class="ion-text-center">My Cart</h3>
   <ion-grid>
     <ion-row>
       <ion-col size="8">
         <ion-grid>
-          <ion-row style="background-color: grey;">
-            <ion-col size="5">Product</ion-col>
-            <ion-col size="2">Per Unit Price</ion-col>
-            <ion-col size="3">Quantity</ion-col>
-            <ion-col size="2">Amount</ion-col>
+          <ion-row style="background-color: #f4f5f8;padding:5px;">
+            <ion-col size="4" style="font-weight: bold;">Product</ion-col>
+            <ion-col size="3" style="font-weight: bold;">Per Unit Price</ion-col>
+            <ion-col size="3" style="font-weight: bold;">Quantity</ion-col>
+            <ion-col size="2" style="font-weight: bold;">Amount</ion-col>
           </ion-row>
-          <ion-row *ngFor="let i of [].constructor(3)">
-            <ion-col size="5">
+          <ion-row *ngFor="let i of [].constructor(3)" style="border-bottom: 1px solid grey;padding-top:5px;">
+            <ion-col size="4">
               <ion-row>
                 <ion-col style="width:100px;height:100px;">
                   <ion-img [src]="'https://i.ndtvimg.com/mt/cooks/2014-11/carrots.jpg'"></ion-img>
@@ -19,21 +19,69 @@
                 <ion-col>Carrot</ion-col>
               </ion-row>
             </ion-col>
-            <ion-col size="2">120</ion-col>
+            <ion-col size="3">$120.00</ion-col>
             <ion-col size="3">
               <ion-button color="danger" (click)="removeItem(item)"><span class="span-general">-</span></ion-button>
               <ion-button color="light"><span style="color: black; font-weight: bold;">1</span>
               </ion-button>
               <ion-button color="success" (click)="addItem(item)"><span class="span-general">+</span></ion-button>
             </ion-col>
-            <ion-col size="2">240</ion-col>
+            <ion-col size="2">$240.00</ion-col>
           </ion-row>
         </ion-grid>
       </ion-col>
-      <ion-col size="4">
-        <div style="background-color: burlywood;">
-          Summary
-        </div>
+      <ion-col size="4" style="background-color: #f4f5f8;">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <div style="font-size:24px;font-weight: bold;padding: 5px 15px 10px; border-bottom: 1px solid black;">
+                Order Summary
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row style="padding: 10px 0;">
+            <ion-col size="6">Price</ion-col>
+            <ion-col size="6" class="ion-text-end">$240.00</ion-col>
+          </ion-row>
+          <ion-row style="padding: 10px 0;">
+            <ion-col size="6">Delivery Charges</ion-col>
+            <ion-col size="6" class="ion-text-end">Free</ion-col>
+          </ion-row>
+          <ion-row style="border-bottom: 1px solid black;padding: 10px 0;">
+            <ion-col size="6">Discounts</ion-col>
+            <ion-col size="6" class="ion-text-end">-$30.00</ion-col>
+          </ion-row>
+          <ion-row style="padding: 10px 0;">
+            <ion-col size="6">
+              <div style="font-weight: 600;">
+                Total
+              </div>
+            </ion-col>
+            <ion-col size="6">
+              <div style="font-weight: 600;" class="ion-text-end">$210.00</div>
+              <div style="font-weight: 600;font-size:14px;" class="ion-text-end">(Total Savings $30.00)</div>
+            </ion-col>
+          </ion-row>
+          <ion-row style="padding: 10px 0;" *ngIf="canLogin">
+            <ion-col class="ion-text-center">
+              <ion-button color="warning" shape="round">
+                <span style="color:white;font-weight: bold;">Place Order</span>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row style="padding: 10px 0;" *ngIf="!canLogin">
+            <ion-col class="ion-text-center">
+              <ion-button color="danger" shape="round" (click)="loginPopover()">
+                <span style="color:white;font-weight: bold;">Login</span>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row style="padding: 10px 0;">
+            <ion-col class="ion-text-center">
+              <a [routerLink]="['/']">Continue Shopping</a>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-col>
     </ion-row>
   </ion-grid>

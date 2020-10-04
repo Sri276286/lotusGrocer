@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { CartService } from 'src/app/services/cart.service';
+import { LotusCommonService } from 'src/app/services/common.service';
 import { ProductsService } from '../../services/products.service';
 
 @Component({
@@ -12,17 +13,33 @@ import { ProductsService } from '../../services/products.service';
 export class ProductPage implements OnInit {
 
   product: Product;
+  breadcrumb = [];
+  isAdmin: boolean = false;
   constructor(private route: ActivatedRoute,
     private productService: ProductsService,
-    private cartService: CartService) { }
+    private cartService: CartService,
+    private commonService: LotusCommonService,
+    private router: Router) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((paramMap) => {
       const id = paramMap.get('id');
       this.productService.getProduct(id).subscribe((res: Product) => {
         this.product = res;
+        this.breadcrumb = [
+          { label: 'Home', path: '/' },
+          { label: this.product.category, path: `/products/${this.product.category_id}` },
+          { label: this.product.product_name }
+        ];
       });
     });
+    this.commonService.isAdmin$.subscribe(() => {
+      this.isAdmin = this.commonService.isAdmin();
+    });
+  }
+
+  navigateTo(product) {
+    this.router.navigate(['/addproduct', { data: { 'product': product } }]);
   }
 
   /**

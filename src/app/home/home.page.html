@@ -1,19 +1,17 @@
-<div>
-  <ion-button [routerLink]="['addproduct']">Add Product</ion-button>
-</div>
-<div style="position:relative;">
+<div style="position:relative;" *ngIf="canLogin && !isAdmin">
   <h3>Member Deals</h3>
-  <div class="arrow-left-product" (click)="slidePrev()">
+  <div class="arrow-left-product" (click)="slidePrev(mdslides)">
     <ion-icon name="chevron-back-outline"></ion-icon>
   </div>
-  <div class="arrow-right-product" (click)="slideNext()">
+  <div class="arrow-right-product" (click)="slideNext(mdslides)">
     <ion-icon name="chevron-forward-outline"></ion-icon>
   </div>
-  <ion-slides pager="true" [options]="slideOpts">
+  <ion-slides pager="true" [options]="slideOpts" #memberDeals>
     <ion-slide *ngFor="let product of products">
       <div>
         <ion-grid>
-          <ion-row [routerLink]="[product.product_id]" style="outline:0;cursor:pointer;">
+          <ion-row [routerLink]="['products', product.category_id, product.product_id]"
+            style="outline:0;cursor:pointer;">
             <ion-col>
               <ion-img [src]="product.imageurl" style="max-width:250px;max-height:200px;"></ion-img>
             </ion-col>
@@ -70,15 +68,15 @@
     </ion-slide>
   </ion-slides>
 </div>
-<div style="position:relative;">
+<div style="position:relative;" *ngIf="!isAdmin">
   <h3>Promotion Deals</h3>
-  <div class="arrow-left-product" (click)="slidePrev()">
+  <div class="arrow-left-product" (click)="slidePrev(pdslides)">
     <ion-icon name="chevron-back-outline"></ion-icon>
   </div>
-  <div class="arrow-right-product" (click)="slideNext()">
+  <div class="arrow-right-product" (click)="slideNext(pdslides)">
     <ion-icon name="chevron-forward-outline"></ion-icon>
   </div>
-  <ion-slides pager="true" [options]="slideOpts">
+  <ion-slides pager="true" [options]="slideOpts" #promoDeals>
     <ion-slide *ngFor="let product of products">
       <div>
         <ion-grid>

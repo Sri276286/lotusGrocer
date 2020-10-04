@@ -1,12 +1,10 @@
 <div>
-  <div>
-    <ul class="breadcrumb">
-      <li><a [routerLink]="['/']">Home</a></li>
-      <li><a [routerLink]="['products']">Fruits & Veg</a></li>
-      <li><a [routerLink]="['products', product.product_id]">Carrots</a></li>
-    </ul>
-  </div>
+  <lotus-breadcrumb [breadcrumb]="breadcrumb"></lotus-breadcrumb>
   <ion-grid>
+    <ion-row style="padding: 10px 0;" *ngIf="isAdmin" class="ion-text-end">
+      <ion-button shape="round" color="warning" (click)="navigateTo(product)">Edit</ion-button>
+      <ion-button shape="round" color="danger">Delete</ion-button>
+    </ion-row>
     <ion-row *ngIf="product">
       <ion-col size="7">
         <div style="background-color: #f4f5f8; padding:50px;">
@@ -33,12 +31,12 @@
           <span style="font-weight: bold;padding:0 10px; font-size:26px;">${{product.discount_price}}</span>
           <span style="color: orangered;">(25% OFF)</span></div>
         <div>
-          <ion-row *ngIf="!product.quantity">
+          <ion-row *ngIf="!product.quantity &&!isAdmin">
             <ion-col>
               <ion-button shape="round" (click)="addItem(product)">ADD +</ion-button>
             </ion-col>
           </ion-row>
-          <ion-row *ngIf="product.quantity">
+          <ion-row *ngIf="product.quantity && !isAdmin">
             <ion-col>
               <div>
                 <ion-button color="danger" (click)="removeItem(product)"><span>-</span></ion-button>

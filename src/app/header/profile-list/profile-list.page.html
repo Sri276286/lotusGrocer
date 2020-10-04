@@ -1,5 +1,5 @@
 <ion-list>
-    <ion-item [routerLink]="['orders']" (click)="commonService.dismissPopover()">My Orders</ion-item>
+    <ion-item [routerLink]="['orders']" (click)="commonService.dismissPopover()" *ngIf="!isAdmin">My Orders</ion-item>
     <ion-item [routerLink]="['profile']" (click)="commonService.dismissPopover()">My Profile</ion-item>
     <ion-item lines="none" style="cursor: pointer;" (click)="doLogout()">Logout</ion-item>
 </ion-list>

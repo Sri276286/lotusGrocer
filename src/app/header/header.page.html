@@ -21,7 +21,7 @@
               <ion-icon style="font-size:24px;vertical-align:middle;" name="chevron-down-outline"></ion-icon>
             </div>
           </ion-col>
-          <ion-col>
+          <ion-col *ngIf="!isAdmin">
             <div [routerLink]="['cart']" style="cursor: pointer; padding-top:10px; outline:0;">
               <div style="display:inline;">Checkout </div>
               <div style="position: relative;display:inline;">
@@ -36,9 +36,14 @@
       </ion-col>
     </ion-row>
     <ion-row style="border-top:1px solid grey;">
-      <ion-button (click)="showCategories($event)">Categories <ion-icon style="font-size:24px;"
-          name="chevron-down-outline"></ion-icon>
-      </ion-button>
+      <ion-col>
+        <ion-button (click)="showCategories($event)">Categories <ion-icon style="font-size:24px;"
+            name="chevron-down-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col *ngIf="isAdmin" class="ion-text-end">
+        <ion-button [routerLink]="['addproduct']" color="success">Add Product</ion-button>
+      </ion-col>
     </ion-row>
   </ion-grid>
 </ion-header>

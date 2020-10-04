@@ -29,8 +29,11 @@ export class LoginPage implements OnInit {
     */
     submit(isvalid: boolean) {
         if (isvalid) {
-            this.loginService.login(this.loginForm.value).subscribe(() => {
+            this.loginService.login(this.loginForm.value).subscribe((res) => {
                 this.commonService.loginSuccess$.next(true);
+                if (res && res.isAdmin) {
+                    this.commonService.isAdmin$.next(true);
+                }
                 this.commonService.dismissPopover();
             });
         }

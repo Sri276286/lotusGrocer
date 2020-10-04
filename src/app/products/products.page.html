@@ -1,5 +1,6 @@
 <div>
-  <h3>
+  <lotus-breadcrumb [breadcrumb]="breadcrumb"></lotus-breadcrumb>
+  <h3 class="ion-text-center">
     Fruits & Veg
   </h3>
   <ion-grid class="ion-padding">
@@ -47,12 +48,12 @@
                 <span>was ${{product.discount_price}}</span>
               </ion-col>
             </ion-row>
-            <ion-row *ngIf="!product.quantity">
+            <ion-row *ngIf="!product.quantity && !isAdmin">
               <ion-col>
                 <ion-button (click)="addItem(product)">ADD +</ion-button>
               </ion-col>
             </ion-row>
-            <ion-row *ngIf="product.quantity">
+            <ion-row *ngIf="product.quantity && !isAdmin">
               <ion-col>
                 <div>
                   <ion-button color="danger" (click)="removeItem(product)"><span>-</span></ion-button>
@@ -61,6 +62,10 @@
                   <ion-button color="success" (click)="addItem(product)"><span>+</span></ion-button>
                 </div>
               </ion-col>
+            </ion-row>
+            <ion-row style="padding: 10px 0;" *ngIf="isAdmin">
+              <ion-button shape="round" color="warning">Edit</ion-button>
+              <ion-button shape="round" color="danger">Delete</ion-button>
             </ion-row>
           </ion-grid>
         </div>

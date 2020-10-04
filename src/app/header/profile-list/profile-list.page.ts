@@ -8,7 +8,11 @@ import { LotusCommonService } from 'src/app/services/common.service';
 })
 export class ProfileListPage {
 
+    isAdmin: boolean = false;
     constructor(private commonService: LotusCommonService) {
+        this.commonService.isAdmin$.subscribe((flag) => {
+            this.isAdmin = flag;
+        });
     }
 
     doLogout() {

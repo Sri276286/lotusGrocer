@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'lotus-add-product',
@@ -9,7 +10,12 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AddProductPage implements OnInit {
 
   productForm: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+    private route: ActivatedRoute) {
+    this.route.paramMap.subscribe((paramMap) => {
+      console.log('dataaaaa => ', paramMap.get('data'));
+    });
+  }
 
   ngOnInit() {
     this.productForm = this.fb.group({

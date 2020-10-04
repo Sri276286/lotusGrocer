@@ -8,12 +8,18 @@ import { BehaviorSubject } from 'rxjs';
 export class LotusCommonService {
     popover;
     loginSuccess$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+    isAdmin$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
     constructor(private popoverController: PopoverController) { }
 
     public isLogin() {
         const auth_token = localStorage.getItem("auth_token");
         const session_active = localStorage.getItem("session_active");
         return auth_token && session_active ? true : false;
+    }
+
+    public isAdmin() {
+        const isAdmin = localStorage.getItem("admin");
+        return isAdmin ? true : false;
     }
 
     async presentPopover(component, data?: any, cssclass?: any, ev?: any, backdrop: boolean = true) {
