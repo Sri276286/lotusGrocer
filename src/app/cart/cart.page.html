@@ -10,23 +10,23 @@
             <ion-col size="3" style="font-weight: bold;">Quantity</ion-col>
             <ion-col size="2" style="font-weight: bold;">Amount</ion-col>
           </ion-row>
-          <ion-row *ngFor="let i of [].constructor(3)" style="border-bottom: 1px solid grey;padding-top:5px;">
+          <ion-row *ngFor="let product of items" style="border-bottom: 1px solid grey;padding-top:5px;">
             <ion-col size="4">
               <ion-row>
                 <ion-col style="width:100px;height:100px;">
-                  <ion-img [src]="'https://i.ndtvimg.com/mt/cooks/2014-11/carrots.jpg'"></ion-img>
+                  <ion-img [src]="product.imageurl"></ion-img>
                 </ion-col>
-                <ion-col>Carrot</ion-col>
+                <ion-col>{{product.product_name | titlecase}}</ion-col>
               </ion-row>
             </ion-col>
-            <ion-col size="3">$120.00</ion-col>
+            <ion-col size="3">${{product.discount_price}}</ion-col>
             <ion-col size="3">
               <ion-button color="danger" (click)="removeItem(item)"><span class="span-general">-</span></ion-button>
-              <ion-button color="light"><span style="color: black; font-weight: bold;">1</span>
+              <ion-button color="light"><span style="color: black; font-weight: bold;">{{product.quantity}}</span>
               </ion-button>
               <ion-button color="success" (click)="addItem(item)"><span class="span-general">+</span></ion-button>
             </ion-col>
-            <ion-col size="2">$240.00</ion-col>
+            <ion-col size="2">${{product.discount_price * product.quantity}}</ion-col>
           </ion-row>
         </ion-grid>
       </ion-col>

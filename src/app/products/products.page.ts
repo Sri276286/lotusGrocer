@@ -72,4 +72,8 @@ export class ProductsPage implements OnInit {
     return item;
   }
 
+  public deleteAlert(product) {
+    this.commonService.deleteProduct$.next(product);
+  }
+
 }

@@ -57,7 +57,7 @@
               <ion-col>
                 <div>
                   <ion-button color="danger" (click)="removeItem(product)"><span>-</span></ion-button>
-                  <ion-button color="light"><span style="color: black; font-weight: bold;">1</span>
+                  <ion-button color="light"><span style="color: black; font-weight: bold;">{{product.quantity}}</span>
                   </ion-button>
                   <ion-button color="success" (click)="addItem(product)"><span>+</span></ion-button>
                 </div>
@@ -65,7 +65,7 @@
             </ion-row>
             <ion-row style="padding: 10px 0;" *ngIf="isAdmin">
               <ion-button shape="round" color="warning">Edit</ion-button>
-              <ion-button shape="round" color="danger">Delete</ion-button>
+              <ion-button shape="round" color="danger" (click)="deleteAlert(product)">Delete</ion-button>
             </ion-row>
           </ion-grid>
         </div>

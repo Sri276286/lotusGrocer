@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { Product } from 'src/app/models/product';
 import { CartService } from 'src/app/services/cart.service';
 import { LotusCommonService } from 'src/app/services/common.service';
@@ -19,7 +20,8 @@ export class ProductPage implements OnInit {
     private productService: ProductsService,
     private cartService: CartService,
     private commonService: LotusCommonService,
-    private router: Router) { }
+    private router: Router,
+    public alertCtrl: AlertController) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((paramMap) => {
@@ -35,6 +37,9 @@ export class ProductPage implements OnInit {
     });
     this.commonService.isAdmin$.subscribe(() => {
       this.isAdmin = this.commonService.isAdmin();
+    });
+    this.commonService.deleteProduct$.subscribe((product) => {
+      this.deleteAlert(product);
     });
   }
 
@@ -80,6 +85,35 @@ export class ProductPage implements OnInit {
       });
     }
     return item;
+  }
+
+  public deleteAlert(product) {
+    this.presentAlertConfirm(product);
+  }
+
+  async presentAlertConfirm(product) {
+    const alert = await this.alertCtrl.create({
+      header: 'Delete ' + product.product_name,
+      message: 'Are you sure you want to delete this product?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary'
+        }, {
+          text: 'Yes',
+          handler: () => {
+            this.deleteProduct(product);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  private deleteProduct(product) {
+
   }
 
 }

@@ -3,7 +3,7 @@
   <ion-grid>
     <ion-row style="padding: 10px 0;" *ngIf="isAdmin" class="ion-text-end">
       <ion-button shape="round" color="warning" (click)="navigateTo(product)">Edit</ion-button>
-      <ion-button shape="round" color="danger">Delete</ion-button>
+      <ion-button shape="round" color="danger" (click)="deleteAlert(product)">Delete</ion-button>
     </ion-row>
     <ion-row *ngIf="product">
       <ion-col size="7">

@@ -24,9 +24,9 @@
           <ion-col *ngIf="!isAdmin">
             <div [routerLink]="['cart']" style="cursor: pointer; padding-top:10px; outline:0;">
               <div style="display:inline;">Checkout </div>
-              <div style="position: relative;display:inline;">
+              <div style="position: relative;display:inline;" *ngIf="cartQuantity">
                 <ion-icon style="font-size:28px;vertical-align: middle;" name="cart-outline"></ion-icon>
-                <span class="cart-badge">2</span>
+                <span class="cart-badge">{{cartQuantity}}</span>
               </div>
             </div>
           </ion-col>

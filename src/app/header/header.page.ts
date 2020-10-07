@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CategoryPage } from '../categories/categories.page';
+import { CartService } from '../services/cart.service';
 import { LotusCommonService } from '../services/common.service';
 import { CredentialsPage } from './credentials/credentials.page';
 import { LoginPage } from './login/login.page';
@@ -11,12 +12,14 @@ import { SearchPage } from './search/search.page';
     templateUrl: 'header.page.html',
     styleUrls: ['header.page.scss']
 })
-export class HeaderPage {
+export class HeaderPage implements OnInit {
 
     show_search_list = false;
     canLogin: boolean = false;
     isAdmin: boolean = false;
-    constructor(private commonService: LotusCommonService) {
+    cartQuantity: number = 0;
+    constructor(private commonService: LotusCommonService,
+        private cartService: CartService) {
         this.commonService.loginSuccess$.subscribe(() => {
             this.canLogin = this.commonService.isLogin();
         });
@@ -24,6 +27,18 @@ export class HeaderPage {
             this.isAdmin = this.commonService.isAdmin();
         });
     }
+
+    ngOnInit() {
+        this.cartService.cartEntity$.subscribe((entity) => {
+            console.log('entity => ', entity);
+            this.cartQuantity = entity && entity.cartItems && entity.cartItems.length;
+        });
+        this.getCart();
+        this.commonService.orderPlaced$.subscribe(() => {
+            this.getCart();
+        });
+    }
+
     loginPopover() {
         this.commonService.presentPopover(CredentialsPage, null, 'login-popover');
     }
@@ -39,5 +54,16 @@ export class HeaderPage {
 
     showProfile(event) {
         this.commonService.presentPopover(ProfileListPage, null, '', event, false);
+    }
+
+    getCart() {
+        // load cart when application is loaded
+        this.cartService.getCartCount().subscribe((res) => {
+            this.cartQuantity = res;
+        }, (error) => {
+            if (error.status === 500) {
+                localStorage.clear();
+            }
+        });
     }
 }

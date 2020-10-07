@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { PopoverController } from '@ionic/angular';
+import { PopoverController, ToastController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
+import { Product } from '../models/product';
 
 @Injectable({
     providedIn: 'root'
@@ -9,7 +10,12 @@ export class LotusCommonService {
     popover;
     loginSuccess$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
     isAdmin$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-    constructor(private popoverController: PopoverController) { }
+    addProduct$: BehaviorSubject<Product> = new BehaviorSubject<Product>(null);
+    editProduct$: BehaviorSubject<Product> = new BehaviorSubject<Product>(null);
+    deleteProduct$: BehaviorSubject<Product> = new BehaviorSubject<Product>(null);
+    orderPlaced$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+    constructor(private popoverController: PopoverController,
+        private toastCtrl: ToastController) { }
 
     public isLogin() {
         const auth_token = localStorage.getItem("auth_token");
@@ -34,6 +40,15 @@ export class LotusCommonService {
             showBackdrop: backdrop
         });
         return await this.popover.present();
+    }
+
+    async presentToast(message: string, position?: "top" | "bottom" | "middle") {
+        const toast = await this.toastCtrl.create({
+            message: message,
+            duration: 4000,
+            position: position
+        });
+        toast.present();
     }
 
     dismissPopover() {
