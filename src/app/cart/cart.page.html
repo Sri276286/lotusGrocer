@@ -62,9 +62,9 @@
               <div style="font-weight: 600;font-size:14px;" class="ion-text-end">(Total Savings $30.00)</div>
             </ion-col>
           </ion-row>
-          <ion-row style="padding: 10px 0;" *ngIf="canLogin">
+          <ion-row style="padding: 10px 0;" *ngIf="!canLogin">
             <ion-col class="ion-text-center">
-              <ion-button color="warning" shape="round">
+              <ion-button color="warning" shape="round" [routerLink]="['checkout']">
                 <span style="color:white;font-weight: bold;">Place Order</span>
               </ion-button>
             </ion-col>

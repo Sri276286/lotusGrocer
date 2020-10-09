@@ -6,6 +6,7 @@ import { CartPage } from './cart.page';
 
 import { CartPageRoutingModule } from './cart-routing.module';
 import { RouterModule } from '@angular/router';
+import { CheckoutPage } from './checkout/checkout.page';
 
 
 @NgModule({
@@ -13,8 +14,12 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     FormsModule,
     IonicModule,
+    RouterModule,
     CartPageRoutingModule
   ],
-  declarations: [CartPage]
+  declarations: [
+    CartPage,
+    CheckoutPage
+  ]
 })
 export class CartPageModule { }

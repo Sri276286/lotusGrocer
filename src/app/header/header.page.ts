@@ -25,6 +25,7 @@ export class HeaderPage implements OnInit {
         });
         this.commonService.isAdmin$.subscribe(() => {
             this.isAdmin = this.commonService.isAdmin();
+            console.log('is admin ', this.isAdmin);
         });
     }
 

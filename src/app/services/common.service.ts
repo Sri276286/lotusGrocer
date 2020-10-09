@@ -24,8 +24,8 @@ export class LotusCommonService {
     }
 
     public isAdmin() {
-        const isAdmin = localStorage.getItem("admin");
-        return isAdmin ? true : false;
+        const isAdmin = localStorage.getItem('admin');
+        return isAdmin === 'true';
     }
 
     async presentPopover(component, data?: any, cssclass?: any, ev?: any, backdrop: boolean = true) {
