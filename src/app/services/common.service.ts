@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { PopoverController, ToastController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
+import { UserAddress } from '../models/address';
 import { Product } from '../models/product';
 
 @Injectable({
@@ -14,6 +15,8 @@ export class LotusCommonService {
     editProduct$: BehaviorSubject<Product> = new BehaviorSubject<Product>(null);
     deleteProduct$: BehaviorSubject<Product> = new BehaviorSubject<Product>(null);
     orderPlaced$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+    addressSaved$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+    addressSelected$: BehaviorSubject<UserAddress> = new BehaviorSubject<UserAddress>(null);
     constructor(private popoverController: PopoverController,
         private toastCtrl: ToastController) { }
 
@@ -29,6 +32,7 @@ export class LotusCommonService {
     }
 
     async presentPopover(component, data?: any, cssclass?: any, ev?: any, backdrop: boolean = true) {
+        console.log('comp => ', component);
         this.popover = await this.popoverController.create({
             component: component,
             componentProps: data,

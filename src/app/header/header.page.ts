@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryPage } from '../categories/categories.page';
 import { CartService } from '../services/cart.service';
 import { LotusCommonService } from '../services/common.service';
+import { LoginService } from '../services/login.service';
 import { CredentialsPage } from './credentials/credentials.page';
 import { LoginPage } from './login/login.page';
 import { ProfileListPage } from './profile-list/profile-list.page';
@@ -18,14 +19,20 @@ export class HeaderPage implements OnInit {
     canLogin: boolean = false;
     isAdmin: boolean = false;
     cartQuantity: number = 0;
+    username: string = '';
     constructor(private commonService: LotusCommonService,
-        private cartService: CartService) {
+        private cartService: CartService,
+        private loginService: LoginService) {
         this.commonService.loginSuccess$.subscribe(() => {
             this.canLogin = this.commonService.isLogin();
         });
         this.commonService.isAdmin$.subscribe(() => {
             this.isAdmin = this.commonService.isAdmin();
             console.log('is admin ', this.isAdmin);
+        });
+        this.loginService.getUser().subscribe((user) => {
+            console.log('user => ', user);
+            this.username = user && user.name;
         });
     }
 

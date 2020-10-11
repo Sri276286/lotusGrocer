@@ -11,6 +11,7 @@ import { ApiConfig } from '../apiconfig/api.config';
 export class LoginService {
 
     loginUrl: string = 'assets/static/login.json';
+    userDetailsUrl: string = 'assets/static/user.json';
     constructor(private http: HttpClient) {
     }
 
@@ -46,6 +47,19 @@ export class LoginService {
             headers: httpHeaders
         };
         return this.http.post(ApiConfig.signupURL, user, options);
+    }
+
+    /**
+ * Get user details
+ */
+    public getUser() {
+        // return this.http.get(ApiConfig.userDetailsURL)
+        return this.http.get(this.userDetailsUrl)
+            .pipe(map((res: any) => {
+                const user = res;
+                // login successful if there's a jwt token in the response
+                return user;
+            }));
     }
 
 }

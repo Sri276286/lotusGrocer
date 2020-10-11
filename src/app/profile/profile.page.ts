@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { LotusCommonService } from '../services/common.service';
+import { AddressPage } from './address/address.page';
 
 @Component({
   selector: 'lotus-profile',
@@ -7,6 +9,10 @@ import { Component } from '@angular/core';
 })
 export class ProfilePage {
 
-  constructor() { }
+  constructor(private commonService: LotusCommonService) { }
+
+  addAddress() {
+    this.commonService.presentPopover(AddressPage, {isNew: true}, 'address-popover');
+  }
 
 }
