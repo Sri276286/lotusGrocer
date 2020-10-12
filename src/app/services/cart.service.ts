@@ -147,6 +147,7 @@ export class CartService {
     private getCart() {
         let cartEntity = localStorage.getItem('cartEntity');
         let cart = cartEntity ? JSON.parse(cartEntity) : null;
+        this.cartEntity$.next(cart);
         return cart;
     }
 }

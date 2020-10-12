@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, AlertController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 import { UserAddress } from 'src/app/models/address';
 import { LotusCommonService } from 'src/app/services/common.service';
 import { UserService } from 'src/app/services/user.service';
@@ -16,18 +16,18 @@ export class AddressListPage implements OnInit {
     isFromDeliverPage: boolean = false;
     isLogin: boolean = false;
 
-    constructor(private _userService: UserService,
-        public modalCtrl: ModalController,
-        private _commonService: LotusCommonService,
+    constructor(private userService: UserService,
+        private commonService: LotusCommonService,
         private _alertCtrl: AlertController) {
     }
 
     ngOnInit() {
-        this._commonService.loginSuccess$.subscribe(() => {
-            this.isLogin = this._commonService.isLogin();
+        console.log('ng on init');
+        this.commonService.loginSuccess$.subscribe(() => {
+            this.isLogin = this.commonService.isLogin();
         });
         this.getAddresses();
-        this._commonService.addressSaved$.subscribe((isSaved) => {
+        this.commonService.addressSaved$.subscribe((isSaved) => {
             if (isSaved) {
                 this.getAddresses();
             }
@@ -38,7 +38,7 @@ export class AddressListPage implements OnInit {
      * Get list of addresses
      */
     getAddresses() {
-        this._userService.getAddressList()
+        this.userService.getAddressList()
             .subscribe((res: any) => {
                 this.userAddressData = res;
                 localStorage.setItem('add_list', JSON.stringify(this.userAddressData));
@@ -49,28 +49,33 @@ export class AddressListPage implements OnInit {
      * Add address
      */
     addAddress() {
-        this._commonService.presentPopover(AddressPage, { isNew: true }, 'address-popover');
+        this.commonService.presentPopover(AddressPage, { isNew: true }, 'address-popover');
     }
 
     /**
      * Edit an address
      */
     editAddress(address: UserAddress) {
-        this._commonService.presentPopover(AddressPage, { address }, 'address-popover');
+        this.commonService.presentPopover(AddressPage, { address }, 'address-popover');
     }
 
     removeAddress(address: UserAddress) {
         if (address.primaryAddress) {
-            this._commonService.presentToast('Please set another address as default address before deleting this.');
+            this.commonService.presentToast('Please set another address as default address before deleting this.');
         } else {
             this.presentAlert(address);
         }
     }
 
+    setPrimary(address: UserAddress) {
+        this.userService.setPrimaryAddress(address).subscribe(() => {
+            this.getAddresses();
+        });
+    }
+
     //select address from address book and publish it as event for the delivery page to subscribe and get it
     selectAddress(userAddress: UserAddress) {
-        this._commonService.addressSelected$.next(userAddress);
-        this.modalCtrl.dismiss();
+        this.commonService.addressSelected$.next(userAddress);
     }
 
     async presentAlert(address: UserAddress) {
@@ -99,7 +104,7 @@ export class AddressListPage implements OnInit {
      * API call to delete address
      */
     delete(id) {
-        this._userService.deleteAddress(id).subscribe(() => {
+        this.userService.deleteAddress(id).subscribe(() => {
             this.getAddresses();
         });
     }

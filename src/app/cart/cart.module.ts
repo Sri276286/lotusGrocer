@@ -7,6 +7,7 @@ import { CartPage } from './cart.page';
 import { CartPageRoutingModule } from './cart-routing.module';
 import { RouterModule } from '@angular/router';
 import { CheckoutPage } from './checkout/checkout.page';
+import { AddressListPage } from '../profile/address-list/address-list.page';
 
 
 @NgModule({

@@ -28,6 +28,7 @@ export class AddressPage implements OnInit {
     ) { }
 
     ngOnInit() {
+        console.log('aaa ddd ', this.address);
         this.userAddress = this.fb.group({
             addressId: [""],
             name: ["", Validators.required],

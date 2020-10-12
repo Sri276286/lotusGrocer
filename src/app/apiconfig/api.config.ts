@@ -16,4 +16,5 @@ export class ApiConfig {
     static userAddressAddURL: string = `${ApiConfig.apiHostUrl}/user/address/save`; // POST
     static userAddressUpdateURL: string = `${ApiConfig.apiHostUrl}/user/address/update`; // POST
     static userAddressDeleteURL: string = `${ApiConfig.apiHostUrl}/user/address`; // POST
+    static setPrimaryAddressURL: string = `${ApiConfig.apiHostUrl}/user/makePrimary`; // POST
 }

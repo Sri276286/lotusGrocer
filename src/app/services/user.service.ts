@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { UserAddress } from '../models/address';
 import { ApiConfig } from '../apiconfig/api.config';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -28,9 +29,13 @@ export class UserService {
     /**
      * Get Primary Address
      */
-    getPrimaryAddress() {
+    getPrimaryAddress(): Observable<UserAddress> {
         // return this._http.get();
-        return this._http.get(this.primaryAddressURL);
+        return this._http.get<UserAddress>(this.primaryAddressURL);
+    }
+
+    setPrimaryAddress(address: UserAddress) {
+        return this._http.post(ApiConfig.setPrimaryAddressURL, address);
     }
 
     /**
