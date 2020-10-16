@@ -4,7 +4,7 @@ import { IonSlides } from '@ionic/angular';
 
 // // import Swiper styles
 // import 'swiper/swiper-bundle.css';
-import { Product } from '../models/product';
+import { Product, ProductEntity } from '../models/product';
 import { LotusCommonService } from '../services/common.service';
 import { ProductsService } from '../services/products.service';
 
@@ -41,8 +41,8 @@ export class HomePage implements OnInit {
 
   getMemberDeals() {
     this.productService.getProducts()
-      .subscribe((res: Product[]) => {
-        this.products = res;
+      .subscribe((res: ProductEntity) => {
+        this.products = res && res.products;
       });
   }
 

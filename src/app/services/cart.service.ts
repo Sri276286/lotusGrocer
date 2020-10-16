@@ -12,6 +12,7 @@ import { map, tap } from 'rxjs/operators';
 export class CartService {
 
     public cartEntity$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+    private placeOrderURL: string = 'assets/static/placeorder.json';
     private cartEntity = {
         total: 0,
         cartItems: []
@@ -149,5 +150,19 @@ export class CartService {
         let cart = cartEntity ? JSON.parse(cartEntity) : null;
         this.cartEntity$.next(cart);
         return cart;
+    }
+
+    placeOrder(obj) {
+        return this.http.get(this.placeOrderURL, obj);
+        // return this.http.put(ApiConfig.placeOrderURL, obj);
+    }
+
+    resetCart() {
+        this.cartEntity$.next(null);
+        this.cartEntity = {
+            total: 0,
+            cartItems: []
+        };
+        localStorage.removeItem('cartEntity');
     }
 }

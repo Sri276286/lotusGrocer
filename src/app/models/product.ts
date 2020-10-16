@@ -1,3 +1,14 @@
+export class SubCategory {
+    name: string;
+    selected: boolean;
+}
+
+export class ProductEntity {
+    category: string;
+    subcategory: SubCategory[];
+    products: Product[];
+}
+
 export class Product {
     product_id: string;
     product_name: string;

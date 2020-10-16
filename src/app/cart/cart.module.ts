@@ -7,7 +7,7 @@ import { CartPage } from './cart.page';
 import { CartPageRoutingModule } from './cart-routing.module';
 import { RouterModule } from '@angular/router';
 import { CheckoutPage } from './checkout/checkout.page';
-import { AddressListPage } from '../profile/address-list/address-list.page';
+import { OrderSuccessPage } from './checkout/order-success/order-success.page';
 
 
 @NgModule({
@@ -20,7 +20,8 @@ import { AddressListPage } from '../profile/address-list/address-list.page';
   ],
   declarations: [
     CartPage,
-    CheckoutPage
+    CheckoutPage,
+    OrderSuccessPage
   ]
 })
 export class CartPageModule { }

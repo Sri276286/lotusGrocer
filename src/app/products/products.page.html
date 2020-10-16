@@ -1,12 +1,14 @@
 <div>
   <lotus-breadcrumb [breadcrumb]="breadcrumb"></lotus-breadcrumb>
-  <h3 class="ion-text-center">
-    Fruits & Veg
+  <h3 class="ion-text-center" *ngIf="productEntity">
+    {{productEntity.category}}
   </h3>
   <ion-grid class="ion-padding">
-    <ion-button color="medium">Fruits</ion-button>
-    <ion-button color="medium">Vegetables</ion-button>
-    <ion-button color="medium">Herbs</ion-button>
+    <ion-button [color]="allSelected ? 'medium' : 'light'" (click)="loadBySubCategory('all')">All</ion-button>
+    <ng-container *ngFor="let sub of productEntity && productEntity.subcategory">
+      <ion-button [color]="sub.selected ? 'medium' : 'light'" (click)="loadBySubCategory(sub.name)">{{sub.name}}
+      </ion-button>
+    </ng-container>
     <ion-row>
       <ion-col size="3" *ngFor="let product of products">
         <div class="product-card">

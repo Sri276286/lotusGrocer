@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PopoverController, ToastController } from '@ionic/angular';
+import { ModalController, PopoverController, ToastController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { UserAddress } from '../models/address';
 import { Product } from '../models/product';
@@ -18,7 +18,8 @@ export class LotusCommonService {
     addressSaved$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
     addressSelected$: BehaviorSubject<UserAddress> = new BehaviorSubject<UserAddress>(null);
     constructor(private popoverController: PopoverController,
-        private toastCtrl: ToastController) { }
+        private toastCtrl: ToastController,
+        private modalCtrl: ModalController) { }
 
     public isLogin() {
         const auth_token = localStorage.getItem("auth_token");
@@ -29,6 +30,15 @@ export class LotusCommonService {
     public isAdmin() {
         const isAdmin = localStorage.getItem('admin');
         return isAdmin === 'true';
+    }
+
+    async presentModal(component, properties?: any, cssclass?: string) {
+        const modal = await this.modalCtrl.create({
+            component: component,
+            componentProps: properties,
+            cssClass: cssclass
+        });
+        return await modal.present();
     }
 
     async presentPopover(component, data?: any, cssclass?: any, ev?: any, backdrop: boolean = true) {

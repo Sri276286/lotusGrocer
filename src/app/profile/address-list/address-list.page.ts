@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { Component, Input, OnInit } from '@angular/core';
+import { AlertController, ModalController } from '@ionic/angular';
 import { UserAddress } from 'src/app/models/address';
 import { LotusCommonService } from 'src/app/services/common.service';
 import { UserService } from 'src/app/services/user.service';
@@ -11,6 +11,7 @@ import { AddressPage } from '../address/address.page';
     styleUrls: ['address-list.page.scss']
 })
 export class AddressListPage implements OnInit {
+    @Input('fromCheckout') fromCheckout = false;
     is_default_address = 'default';
     userAddressData: UserAddress[] = [];
     isFromDeliverPage: boolean = false;
@@ -18,7 +19,8 @@ export class AddressListPage implements OnInit {
 
     constructor(private userService: UserService,
         private commonService: LotusCommonService,
-        private _alertCtrl: AlertController) {
+        private _alertCtrl: AlertController,
+        private modalCtrl: ModalController) {
     }
 
     ngOnInit() {
@@ -76,6 +78,7 @@ export class AddressListPage implements OnInit {
     //select address from address book and publish it as event for the delivery page to subscribe and get it
     selectAddress(userAddress: UserAddress) {
         this.commonService.addressSelected$.next(userAddress);
+        this.modalCtrl.dismiss();
     }
 
     async presentAlert(address: UserAddress) {

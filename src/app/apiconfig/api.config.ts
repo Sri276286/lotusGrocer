@@ -8,6 +8,7 @@ export class ApiConfig {
 
     static cartUpdateURL: string = `${ApiConfig.apiHostUrl}/orderProducts/upsert`; // PUT
     static cartTotalURL: string = `${ApiConfig.apiHostUrl}/orders/total/products/IN_CART`; // GET
+    static placeOrderURL: string = `${ApiConfig.apiHostUrl}/orders/customers/update`; // PUT
 
     // Used for getting cart details, order details based on order status
     static commonCartAndOrderURL: string = `${ApiConfig.apiHostUrl}/orders/customers/orderStatus`;

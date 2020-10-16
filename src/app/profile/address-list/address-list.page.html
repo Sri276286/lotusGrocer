@@ -1,5 +1,5 @@
 <ion-grid class="ion-padding" *ngIf="!isLogin">
-    <ion-row>
+    <ion-row *ngIf="!fromCheckout">
         <ion-col>
             <ion-item (click)="addAddress()" style="cursor: pointer;">
                 <ion-icon name="add-outline" color="success"></ion-icon><span class="span-text">Add Address</span>
@@ -22,7 +22,10 @@
                         </ion-col>
                         <ion-col class="ion-text-end" size="6">
                             <ion-row>
-                                <ion-col size="6" (click)="setPrimary(userAddress)">
+                                <ion-col size="6" *ngIf="fromCheckout" (click)="selectAddress(userAddress)">
+                                    <span style="cursor:pointer;" *ngIf="!userAddress.primaryAddress">Select</span>
+                                </ion-col>
+                                <ion-col size="6" (click)="setPrimary(userAddress)" *ngIf="!fromCheckout">
                                     <span style="cursor: pointer;"  *ngIf="!userAddress.primaryAddress">Set as default</span>
                                 </ion-col>
                                 <ion-col size="3">
