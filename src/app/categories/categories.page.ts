@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../services/categories.service';
 import tippy from 'tippy.js';
+import { LotusCommonService } from '../services/common.service';
+import { SubCategListPage } from './subcateg-list/subcateg-list.page';
 
 @Component({
     selector: 'lotus-categories',
@@ -11,7 +13,8 @@ export class CategoryPage implements OnInit {
     categories;
     tippyInstance;
     subcategory;
-    constructor(private categoryService: CategoryService) {
+    constructor(private categoryService: CategoryService,
+        private commonService: LotusCommonService) {
     }
 
     ngOnInit() {
@@ -20,12 +23,13 @@ export class CategoryPage implements OnInit {
         });
     }
 
-    showSub(category) {
+    showSub(event, category) {
+        // this.commonService.presentPopover(SubCategListPage, {subcateg: category.sub}, 'subcateg-popover', event, false);
         tippy('#' + category.id, {
             interactive: true,
             placement: "bottom",
             appendTo: document.body,
-            arrow: false,
+            arrow: true,
             onCreate(instance) {
                 var ul = document.createElement('ul');
                 ul.style.listStyle = 'none';
@@ -46,4 +50,9 @@ export class CategoryPage implements OnInit {
             }
         });
     }
+
+    // dismissPopover() {
+    //     console.log('aaaa');
+    //     this.commonService.dismissPopover();
+    // }
 }

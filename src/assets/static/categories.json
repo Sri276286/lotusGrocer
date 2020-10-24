@@ -121,56 +121,6 @@
                     "name": "Tofu6"
                 }
             ]
-        },
-        {
-            "id": "c10",
-            "name": "Beverages",
-            "sub": [
-                {
-                    "id": "c41",
-                    "name": "Tofu7"
-                }
-            ]
-        },
-        {
-            "id": "c11",
-            "name": "Legumes & Pulses",
-            "sub": [
-                {
-                    "id": "c41",
-                    "name": "Tofu8"
-                }
-            ]
-        },
-        {
-            "id": "c12",
-            "name": "Home",
-            "sub": [
-                {
-                    "id": "c41",
-                    "name": "Tofu"
-                },
-                {
-                    "id": "c42",
-                    "name": "Paneer"
-                },
-                {
-                    "id": "c43",
-                    "name": "Kimchi"
-                },
-                {
-                    "id": "c44",
-                    "name": "Fruits"
-                },
-                {
-                    "id": "c12",
-                    "name": "Vegetables"
-                },
-                {
-                    "id": "c13",
-                    "name": "Herbs"
-                }
-            ]
         }
     ]
 }

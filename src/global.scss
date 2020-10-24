@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -25,44 +25,48 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-@import 'tippy.js/dist/tippy.css';
+@import "tippy.js/dist/tippy.css";
+// @import "node_modules/primeng/resources/primeng.min.css";
 // @import 'tippy.js/themes/light.css';
 // @import 'swiper/swiper-bundle.css';
 
-.login-popover, .categories-popover {
---width: 70%;
+.login-popover,
+.categories-popover {
+  --width: 70%;
 }
 
 .search-popover {
-    --width: 50%;
-    --height: 50%;
+  --width: 50%;
+  --height: 50%;
 }
 
 .address-popover {
-    --width: 70%;
-    padding: 10px;
+  --width: 70%;
+  padding: 10px;
+}
+
+.subcateg-popover {
+  --width: 15%;
 }
 
 .delivery-address-modal {
-    --width: 80%;
+  --width: 80%;
 }
 
 .order-success-modal {
-    --width: 40%;
-    --height: 30%;
+  --width: 40%;
+  --height: 30%;
 }
 
-
 ion-input {
-    padding-left: 5px;
-    border: 2px solid grey;
+  --padding-start: 10px;
+  border: 2px solid grey;
 }
 
 ion-textarea {
-    border: 2px solid grey;
+  border: 2px solid grey;
 }
 
 ion-select {
-    border: 2px solid grey;
+  border: 2px solid grey;
 }
-

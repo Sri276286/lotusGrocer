@@ -6,6 +6,7 @@ export class SubCategory {
 export class ProductEntity {
     category: string;
     subcategory: SubCategory[];
+    countryoforigin: string[];
     products: Product[];
 }
 

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 import { CategoryPage } from '../categories/categories.page';
 import { CartService } from '../services/cart.service';
+import { CategoryService } from '../services/categories.service';
 import { LotusCommonService } from '../services/common.service';
 import { LoginService } from '../services/login.service';
 import { CredentialsPage } from './credentials/credentials.page';
@@ -20,9 +22,11 @@ export class HeaderPage implements OnInit {
     isAdmin: boolean = false;
     cartQuantity: number = 0;
     username: string = '';
+    menuItems: MenuItem[];
     constructor(private commonService: LotusCommonService,
         private cartService: CartService,
-        private loginService: LoginService) {
+        private loginService: LoginService,
+        private categoryService: CategoryService) {
         this.commonService.loginSuccess$.subscribe(() => {
             this.canLogin = this.commonService.isLogin();
         });
@@ -44,6 +48,10 @@ export class HeaderPage implements OnInit {
         this.getCart();
         this.commonService.orderPlaced$.subscribe(() => {
             this.getCart();
+        });
+        this.categoryService.getCategories().subscribe((res) => {
+            console.log('rrr ', res);
+            this.menuItems = this.loadMenuItems(res);
         });
     }
 
@@ -73,5 +81,33 @@ export class HeaderPage implements OnInit {
                 localStorage.clear();
             }
         });
+    }
+
+    loadMenuItems(res) {
+        const menuItems = [];
+        const categories = res && res.categories;
+        categories.map((categ) => {
+            let menuItem: MenuItem = {
+                label: '',
+                items: []
+            };
+            menuItem.label = categ.name;
+            categ.sub.map((subcateg) => {
+                let allMenuItem = {
+                    label: 'View All',
+                    routerLink: ['/products', categ.id]
+                };
+                menuItem.items.push(allMenuItem);
+                let submenuItem: MenuItem = {
+                    label: '',
+                    routerLink: ''
+                };
+                submenuItem.label = subcateg.name;
+                submenuItem.routerLink = ['/products', categ.id, subcateg.id];
+                menuItem.items.push(submenuItem);
+            });
+            menuItems.push(menuItem);
+        });
+        return menuItems;
     }
 }

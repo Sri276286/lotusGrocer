@@ -10,67 +10,99 @@
       </ion-button>
     </ng-container>
     <ion-row>
-      <ion-col size="3" *ngFor="let product of products">
-        <div class="product-card">
-          <ion-grid>
-            <ion-row [routerLink]="[product.product_id]" style="outline:0;cursor:pointer;">
-              <ion-col>
-                <ion-img [src]="product.imageurl" style="max-width:250px;max-height:200px;"></ion-img>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                <div class="ion-text-center">
-                  <span>Product of {{product.product_origin | titlecase}}</span>
-                </div>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                <span>{{product.product_name | titlecase}}</span>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                <select [(ngModel)]="product.weight" (change)="onWeightChange($event, product)"
-                  style="width:150px; padding: 5px;">
-                  <option [value]="val.weight" *ngFor="let val of product.weights">
-                    {{val.weight}} {{val.unit}}
-                  </option>
-                </select>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                <span style="font-weight: 600;">${{product.original_price}}</span>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                <span>was ${{product.discount_price}}</span>
-              </ion-col>
-            </ion-row>
-            <ion-row *ngIf="!product.quantity && !isAdmin">
-              <ion-col>
-                <ion-button (click)="addItem(product)">ADD +</ion-button>
-              </ion-col>
-            </ion-row>
-            <ion-row *ngIf="product.quantity && !isAdmin">
-              <ion-col>
-                <div>
-                  <ion-button color="danger" (click)="removeItem(product)"><span>-</span></ion-button>
-                  <ion-button color="light"><span style="color: black; font-weight: bold;">{{product.quantity}}</span>
-                  </ion-button>
-                  <ion-button color="success" (click)="addItem(product)"><span>+</span></ion-button>
-                </div>
-              </ion-col>
-            </ion-row>
-            <ion-row style="padding: 10px 0;" *ngIf="isAdmin">
-              <ion-button shape="round" color="warning">Edit</ion-button>
-              <ion-button shape="round" color="danger" (click)="deleteAlert(product)">Delete</ion-button>
-            </ion-row>
-          </ion-grid>
+      <ion-col size="2">
+        <div style="border-bottom: 1px solid grey;padding: 10px 0;">
+          Refine By
         </div>
+        <div>
+          <span style="padding:15px 0;">Country of origin</span>
+          <ion-list>
+            <ion-item *ngFor="let origin of productEntity && productEntity.countryoforigin">
+              <ion-label>{{origin}}</ion-label>
+              <ion-checkbox slot="start"></ion-checkbox>
+            </ion-item>
+          </ion-list>
+        </div>
+        <div>
+          <ion-label style="padding:15px 0;">Price</ion-label>
+          <div class="ion-text-center" style="border: 1px solid grey; padding: 5px; margin: 3px 0; cursor: pointer;">Low to High</div>
+          <div class="ion-text-center" style="border: 1px solid grey; padding: 5px; cursor: pointer;margin: 6px 0;">High to Low</div>
+          <div style="display: flex;">
+            <ion-input placeholder="Min"><span style="padding-left: 5px;">$</span></ion-input>
+            &nbsp;&nbsp;
+            <ion-input placeholder="Max"><span style="padding-left: 5px;">$</span></ion-input>
+            <ion-button>GO</ion-button>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col size="10">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="3" *ngFor="let product of products">
+              <div class="product-card">
+                <ion-grid>
+                  <ion-row [routerLink]="[product.product_id]" style="outline:0;cursor:pointer;">
+                    <ion-col>
+                      <ion-img [src]="product.imageurl" style="max-width:250px;max-height:200px;"></ion-img>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      <div class="ion-text-center">
+                        <span>Product of {{product.product_origin | titlecase}}</span>
+                      </div>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      <span>{{product.product_name | titlecase}}</span>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      <select [(ngModel)]="product.weight" (change)="onWeightChange($event, product)"
+                        style="width:150px; padding: 5px;">
+                        <option [value]="val.weight" *ngFor="let val of product.weights">
+                          {{val.weight}} {{val.unit}}
+                        </option>
+                      </select>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      <span style="font-weight: 600;">${{product.original_price}}</span>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      <span>was ${{product.discount_price}}</span>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row *ngIf="!product.quantity && !isAdmin">
+                    <ion-col>
+                      <ion-button (click)="addItem(product)">ADD +</ion-button>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row *ngIf="product.quantity && !isAdmin">
+                    <ion-col>
+                      <div>
+                        <ion-button color="danger" (click)="removeItem(product)"><span>-</span></ion-button>
+                        <ion-button color="light"><span
+                            style="color: black; font-weight: bold;">{{product.quantity}}</span>
+                        </ion-button>
+                        <ion-button color="success" (click)="addItem(product)"><span>+</span></ion-button>
+                      </div>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row style="padding: 10px 0;" *ngIf="isAdmin">
+                    <ion-button shape="round" color="warning">Edit</ion-button>
+                    <ion-button shape="round" color="danger" (click)="deleteAlert(product)">Delete</ion-button>
+                  </ion-row>
+                </ion-grid>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-col>
     </ion-row>
   </ion-grid>

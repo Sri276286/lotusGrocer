@@ -22,9 +22,9 @@
             </div>
           </ion-col>
           <ion-col *ngIf="!isAdmin">
-            <div [routerLink]="['cart']" style="cursor: pointer; padding-top:10px; outline:0;">
-              <div style="display:inline;">Checkout </div>
-              <div style="position: relative;display:inline;" *ngIf="cartQuantity">
+            <div [routerLink]="['cart']" style="display:flex;cursor: pointer; padding-top:10px; outline:0;">
+              <div>Checkout </div>
+              <div *ngIf="cartQuantity">
                 <ion-icon style="font-size:28px;vertical-align: middle;" name="cart-outline"></ion-icon>
                 <span class="cart-badge">{{cartQuantity}}</span>
               </div>
@@ -37,9 +37,10 @@
     </ion-row>
     <ion-row style="border-top:1px solid grey;">
       <ion-col>
-        <ion-button (click)="showCategories($event)">Categories <ion-icon style="font-size:24px;"
+        <ion-button (click)="menu.toggle($event)">Categories <ion-icon style="font-size:24px;"
             name="chevron-down-outline"></ion-icon>
         </ion-button>
+        <!-- <button #btn type="button" pButton icon="pi pi-bars" label="Show" (click)="menu.toggle($event)"></button> -->
       </ion-col>
       <ion-col *ngIf="isAdmin" class="ion-text-end">
         <ion-button [routerLink]="['addproduct']" color="success">Add Product</ion-button>
@@ -47,3 +48,4 @@
     </ion-row>
   </ion-grid>
 </ion-header>
+<p-tieredMenu #menu [model]="menuItems" [popup]="true"></p-tieredMenu>
