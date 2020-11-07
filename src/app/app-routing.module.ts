@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AddCategoryPage } from './categories/addcategory/addcategory.page';
 import { HomePage } from './home/home.page';
 import { AddProductPage } from './products/addproduct/addproduct.page';
 
@@ -27,6 +28,9 @@ const routes: Routes = [
   {
     path: 'addproduct',
     component: AddProductPage
+  },  {
+    path: 'addcategory',
+    component: AddCategoryPage
   },
   {
     path: '',

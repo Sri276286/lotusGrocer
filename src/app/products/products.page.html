@@ -25,8 +25,10 @@
         </div>
         <div>
           <ion-label style="padding:15px 0;">Price</ion-label>
-          <div class="ion-text-center" style="border: 1px solid grey; padding: 5px; margin: 3px 0; cursor: pointer;">Low to High</div>
-          <div class="ion-text-center" style="border: 1px solid grey; padding: 5px; cursor: pointer;margin: 6px 0;">High to Low</div>
+          <div class="ion-text-center" style="border: 1px solid grey; padding: 5px; margin: 3px 0; cursor: pointer;">Low
+            to High</div>
+          <div class="ion-text-center" style="border: 1px solid grey; padding: 5px; cursor: pointer;margin: 6px 0;">High
+            to Low</div>
           <div style="display: flex;">
             <ion-input placeholder="Min"><span style="padding-left: 5px;">$</span></ion-input>
             &nbsp;&nbsp;
@@ -41,28 +43,28 @@
             <ion-col size="3" *ngFor="let product of products">
               <div class="product-card">
                 <ion-grid>
-                  <ion-row [routerLink]="[product.product_id]" style="outline:0;cursor:pointer;">
+                  <ion-row [routerLink]="[product.productId]" style="outline:0;cursor:pointer;">
                     <ion-col>
-                      <ion-img [src]="product.imageurl" style="max-width:250px;max-height:200px;"></ion-img>
+                      <ion-img [src]="product.imageURL" style="max-width:250px;max-height:200px;"></ion-img>
                     </ion-col>
                   </ion-row>
                   <ion-row>
                     <ion-col>
                       <div class="ion-text-center">
-                        <span>Product of {{product.product_origin | titlecase}}</span>
+                        <span>Product of {{product.countryOfOrigin | titlecase}}</span>
                       </div>
                     </ion-col>
                   </ion-row>
                   <ion-row>
                     <ion-col>
-                      <span>{{product.product_name | titlecase}}</span>
+                      <span>{{product.productName | titlecase}}</span>
                     </ion-col>
                   </ion-row>
                   <ion-row>
                     <ion-col>
                       <select [(ngModel)]="product.weight" (change)="onWeightChange($event, product)"
                         style="width:150px; padding: 5px;">
-                        <option [value]="val.weight" *ngFor="let val of product.weights">
+                        <option [value]="val.weight" *ngFor="let val of product.listOfWeights">
                           {{val.weight}} {{val.unit}}
                         </option>
                       </select>
@@ -70,12 +72,12 @@
                   </ion-row>
                   <ion-row>
                     <ion-col>
-                      <span style="font-weight: 600;">${{product.original_price}}</span>
+                      <span style="font-weight: 600;">${{product.originalPrice}}</span>
                     </ion-col>
                   </ion-row>
                   <ion-row>
                     <ion-col>
-                      <span>was ${{product.discount_price}}</span>
+                      <span>was ${{product.discountPrice}}</span>
                     </ion-col>
                   </ion-row>
                   <ion-row *ngIf="!product.quantity && !isAdmin">

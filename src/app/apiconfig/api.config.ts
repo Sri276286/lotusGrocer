@@ -18,4 +18,9 @@ export class ApiConfig {
     static userAddressUpdateURL: string = `${ApiConfig.apiHostUrl}/user/address/update`; // POST
     static userAddressDeleteURL: string = `${ApiConfig.apiHostUrl}/user/address`; // POST
     static setPrimaryAddressURL: string = `${ApiConfig.apiHostUrl}/user/makePrimary`; // POST
+
+    static addCategoryURL: string = `${ApiConfig.apiHostUrl}/addcategory`; // POST
+    static updateCategoryURL: string = `${ApiConfig.apiHostUrl}/updatecategory`; // POST
+    static addSubCategoryURL: string = `${ApiConfig.apiHostUrl}/addsubcategory`; // POST
+    static updateSubCategoryURL: string = `${ApiConfig.apiHostUrl}/updatesubcategory`; // POST
 }

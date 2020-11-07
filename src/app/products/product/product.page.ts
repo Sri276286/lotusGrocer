@@ -30,8 +30,8 @@ export class ProductPage implements OnInit {
         this.product = res;
         this.breadcrumb = [
           { label: 'Home', path: '/' },
-          { label: this.product.category, path: `/products/${this.product.category_id}` },
-          { label: this.product.product_name }
+          { label: this.product.category, path: `/products/${this.product.categoryId}` },
+          { label: this.product.productName }
         ];
       });
     });

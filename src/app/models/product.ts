@@ -11,34 +11,37 @@ export class ProductEntity {
 }
 
 export class Product {
-    product_id: string;
-    product_name: string;
+    productId: string;
+    productName: string;
     category: string;
-    category_id: string;
-    sub_category: string;
-    product_description: string;
+    categoryId: string;
+    brand: string;
+    subCategory: string;
+    subCategoryId: string;
     weight: number;
     unit: string;
     description: string;
-    imageurl: string;
-    original_price: number;
-    discount_price: number;
+    imageURL: string;
+    originalPrice: number;
+    discountPrice: number;
+    memberDealDiscount: number;
+    promoDealDiscount: number;
     quantity?: number;
-    total_quantity: number;
-    available_quantity: number;
-    product_origin: string;
-    weights: Weight[]
+    totalQuantity: number;
+    availableQuantity: number;
+    countryOfOrigin: string;
+    listOfWeights: Weight[]
 }
 
 export class Weight {
     weight: number;
     unit: string;
     description: string;
-    imageurl: string;
-    original_price: number;
-    discount_price: number;
+    imageURL: string;
+    originalPrice: number;
+    discountPrice: number;
     quantity?: number;
-    total_quantity: number;
-    available_quantity: number;
-    Default: boolean;
+    totalQuantity: number;
+    availableQuantity: number;
+    default: boolean;
 }

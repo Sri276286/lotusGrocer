@@ -32,7 +32,7 @@ export class CartService {
         } else {
             this.updateCart(item);
         }
-        this.commonService.presentToast(`Successfully added ${item.product_name} to the basket.`);
+        this.commonService.presentToast(`Successfully added ${item.productName} to the basket.`);
     }
 
     removeProduct(item: Product) {
@@ -43,7 +43,7 @@ export class CartService {
         } else {
             this.updateCart(item);
         }
-        this.commonService.presentToast(`Successfully removed ${item.product_name} to the basket.`);
+        this.commonService.presentToast(`Successfully removed ${item.productName} to the basket.`);
     }
 
     /**
@@ -94,21 +94,21 @@ export class CartService {
     }
 
     updateCart(item: Product) {
-        console.log('item => ', item, typeof item.discount_price);
-        let isItemInCart = this.cartEntity && this.cartEntity.cartItems.find(t => t.product_id === item.product_id);
+        console.log('item => ', item, typeof item.discountPrice);
+        let isItemInCart = this.cartEntity && this.cartEntity.cartItems.find(t => t.product_id === item.productId);
         let itemIndex = isItemInCart && this.cartEntity && this.cartEntity.cartItems.indexOf(isItemInCart);
         console.log('isItemInCart ', isItemInCart);
         console.log('itemIndex ', itemIndex);
         if (!isItemInCart) {
             this.cartEntity.cartItems = [...this.cartEntity.cartItems, item];
-            this.cartEntity.total += item.discount_price;
+            this.cartEntity.total += item.discountPrice;
         } else {
             if (item && item.quantity) {
                 this.cartEntity.cartItems[itemIndex] = item;
-                this.cartEntity.total += item.discount_price;
+                this.cartEntity.total += item.discountPrice;
             } else {
                 this.cartEntity.cartItems.splice(itemIndex, 1);
-                this.cartEntity.total -= item.discount_price;
+                this.cartEntity.total -= item.discountPrice;
             }
         }
         // save in local storage

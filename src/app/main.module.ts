@@ -16,11 +16,13 @@ import { HomePage } from './home/home.page';
 import { ProfileListPage } from './header/profile-list/profile-list.page';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { ButtonModule } from 'primeng/button';
+import { AddCategoryPage } from './categories/addcategory/addcategory.page';
 
 const components = [
     HeaderPage,
     FooterPage,
     CategoryPage,
+    AddCategoryPage,
     SubCategListPage,
     LoginPage,
     SignupPage,
